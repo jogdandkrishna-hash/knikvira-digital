@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="mr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>📚 Blog - MPSC UPSC Exam Tips | Knikvira Digital</title>
+  <meta name="description" content="परीक्षा तयारीचे tips, strategies, success stories आणि अभ्यास गाईड">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+      min-height: 100vh;
+      color: #333;
+    }
+
+    /* ANIMATED BACKGROUND */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #1e3c72, #2a5298, #7e22ce, #ec4899);
+      background-size: 400% 400%;
+      animation: gradientBg 15s ease infinite;
+      z-index: -1;
+    }
+
+    @keyframes gradientBg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* HEADER */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: slideDown 0.8s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #1e3c72, #7e22ce);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #1e3c72, #7e22ce);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      animation: scaleIn 0.8s ease;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .hero p {
+      font-size: 18px;
+      opacity: 0.95;
+      animation: fadeUp 0.8s ease 0.2s both;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* BLOG CONTAINER */
+    .blog-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 30px;
+    }
+
+    /* BLOG GRID */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      animation: cardSlideUp 0.6s ease backwards;
+    }
+
+    .blog-card:nth-child(1) { animation-delay: 0.1s; }
+    .blog-card:nth-child(2) { animation-delay: 0.2s; }
+    .blog-card:nth-child(3) { animation-delay: 0.3s; }
+    .blog-card:nth-child(4) { animation-delay: 0.4s; }
+    .blog-card:nth-child(5) { animation-delay: 0.5s; }
+    .blog-card:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes cardSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .blog-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .blog-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-image::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: rotate(45deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .blog-content {
+      padding: 25px;
+    }
+
+    .blog-meta {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .blog-category {
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      animation: popIn 0.4s ease;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .blog-date {
+      color: #999;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .blog-card h2 {
+      color: #1e3c72;
+      font-size: 20px;
+      margin: 15px 0;
+      line-height: 1.4;
+      animation: slideIn 0.5s ease 0.2s both;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .blog-excerpt {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .read-more {
+      display: inline-block;
+      color: #1e3c72;
+      font-weight: 700;
+      text-decoration: none;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .read-more::after {
+      content: ' →';
+      transition: 0.3s;
+    }
+
+    .read-more:hover::after {
+      transform: translateX(5px);
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      height: fit-content;
+      animation: slideInRight 0.8s ease;
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .sidebar h3 {
+      color: #1e3c72;
+      margin-bottom: 20px;
+      font-size: 18px;
+      border-bottom: 3px solid #7e22ce;
+      padding-bottom: 10px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+      animation: listItem 0.4s ease backwards;
+    }
+
+    .sidebar li:nth-child(1) { animation-delay: 0.3s; }
+    .sidebar li:nth-child(2) { animation-delay: 0.4s; }
+    .sidebar li:nth-child(3) { animation-delay: 0.5s; }
+    .sidebar li:nth-child(4) { animation-delay: 0.6s; }
+    .sidebar li:nth-child(5) { animation-delay: 0.7s; }
+
+    @keyframes listItem {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .sidebar a {
+      color: #1e3c72;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sidebar a:hover {
+      color: #7e22ce;
+      transform: translateX(5px);
+    }
+
+    /* NEWSLETTER BOX */
+    .newsletter {
+      background: linear-gradient(135deg, #1e3c72, #7e22ce);
+      color: white;
+      border-radius: 15px;
+      padding: 25px;
+      margin-top: 25px;
+      animation: slideInRight 0.8s ease 0.2s both;
+    }
+
+    .newsletter h3 {
+      border-bottom: none;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    .newsletter p {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 15px;
+    }
+
+    .newsletter input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .newsletter button {
+      width: 100%;
+      padding: 12px;
+      background: white;
+      color: #7e22ce;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .newsletter button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* FOOTER */
+    footer {
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .blog-container {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-bg"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-content">
+      <div class="logo">📚 Knikvira Digital</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="compare-animated.html">Compare</a>
+        <a href="#">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>📚 परीक्षा तयारीचे टिप्स आणि गाईड</h1>
+    <p>यशस्वी candidates चे strategies, study tips, आणि success stories</p>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="blog-container">
+    <!-- BLOG GRID -->
+    <div class="blog-grid">
+      <!-- ARTICLE 1 -->
+      <article class="blog-card">
+        <div class="blog-image">📖</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">MPSC</span>
+            <span class="blog-date">📅 July 8, 2024</span>
+          </div>
+          <h2>MPSC परीक्षा पास करण्याचे 10 महत्वाचे टिप्स</h2>
+          <p class="blog-excerpt">यशस्वी MPSC उमेदवारांकडून शिका. Time management, note-taking आणि revision techniques...</p>
+          <a href="#" class="read-more">Read Article</a>
+        </div>
+      </article>
+
+      <!-- ARTICLE 2 -->
+      <article class="blog-card">
+        <div class="blog-image">🎯</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">UPSC</span>
+            <span class="blog-date">📅 July 5, 2024</span>
+          </div>
+          <h2>UPSC Prelims: 30 दिनांचा Crash Course</h2>
+          <p class="blog-excerpt">UPSC Prelims साठी quick preparation plan. High-yield topics, mock tests, आणि last-minute tips...</p>
+          <a href="#" class="read-more">Read Article</a>
+        </div>
+      </article>
+
+      <!-- ARTICLE 3 -->
+      <article class="blog-card">
+        <div class="blog-image">⚡</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">Police</span>
+            <span class="blog-date">📅 July 1, 2024</span>
+          </div>
+          <h2>Police Bharti Physical Test तयारी</h2>
+          <p class="blog-excerpt">Police recruitment physical test, document verification, आणि medical exam साठी संपूर्ण गाईड...</p>
+          <a href="#" class="read-more">Read Article</a>
+        </div>
+      </article>
+
+      <!-- ARTICLE 4 -->
+      <article class="blog-card">
+        <div class="blog-image">📝</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">Study Tips</span>
+            <span class="blog-date">📅 June 28, 2024</span>
+          </div>
+          <h2>परीक्षांसाठी प्रभावी Note-Taking कसे करावे</h2>
+          <p class="blog-excerpt">Cornell method, mind mapping, आणि active recall techniques यांच्या साहाय्याने effective notes...</p>
+          <a href="#" class="read-more">Read Article</a>
+        </div>
+      </article>
+
+      <!-- ARTICLE 5 -->
+      <article class="blog-card">
+        <div class="blog-image">🏆</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">Success</span>
+            <span class="blog-date">📅 June 25, 2024</span>
+          </div>
+          <h2>Rajesh चा MPSC यशस्वी Journey</h2>
+          <p class="blog-excerpt">Rajesh ने दुसऱ्या प्रयत्नात MPSC कसे पास केले याचा संपूर्ण narrative...</p>
+          <a href="#" class="read-more">Read Article</a>
+        </div>
+      </article>
+
+      <!-- ARTICLE 6 -->
+      <article class="blog-card">
+        <div class="blog-image">🧠</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">Psychology</span>
+            <span class="blog-date">📅 June 22, 2024</span>
+          </div>
+          <h2>परीक्षा Stress आणि Anxiety कसे व्यवस्थापित करावे</h2>
+          <p class="blog-excerpt">Stress management, meditation techniques, आणि महत्वाच्या परीक्षेपूर्वी confidence build करण्याचे तरीके...</p>
+          <a href="#" class="read-more">Read Article</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h3>📌 Categories</h3>
+      <ul>
+        <li><a href="#">MPSC Preparation <span>12</span></a></li>
+        <li><a href="#">UPSC Strategy <span>8</span></a></li>
+        <li><a href="#">Police Bharti <span>6</span></a></li>
+        <li><a href="#">Study Tips <span>15</span></a></li>
+        <li><a href="#">Success Stories <span>5</span></a></li>
+      </ul>
+
+      <h3 style="margin-top: 30px;">🌟 Most Read</h3>
+      <ul>
+        <li><a href="#">MPSC PYQ <span>↗️</span></a></li>
+        <li><a href="#">UPSC Polity <span>↗️</span></a></li>
+        <li><a href="#">Police Pattern <span>↗️</span></a></li>
+        <li><a href="#">Speaking Tips <span>↗️</span></a></li>
+      </ul>
+
+      <div class="newsletter">
+        <h3>📧 Newsletter</h3>
+        <p>आठवड्यातून exam tips आणि strategies मिळवा</p>
+        <input type="email" placeholder="आपला email" required>
+        <button>Subscribe करा</button>
+      </div>
+    </aside>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 Knikvira Digital | सर्व हक्क सुरक्षित</p>
+  </footer>
+</body>
+</html>

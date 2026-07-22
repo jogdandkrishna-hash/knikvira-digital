@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="mr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payment Successful | Knikvira Digital</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://checkout.razorpay.com">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:20px}
+.card{background:rgba(255,255,255,0.97);border-radius:22px;padding:44px 36px;max-width:500px;width:100%;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,0.35)}
+.emoji{font-size:56px;margin-bottom:14px}
+.badge{display:inline-block;background:linear-gradient(135deg,#6c63ff,#9b59b6);color:#fff;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:5px 16px;border-radius:99px;margin-bottom:16px}
+h1{font-size:21px;font-weight:900;color:#0d1b2a;margin-bottom:8px;line-height:1.3}
+.success{font-size:14px;color:#16a34a;font-weight:700;margin-bottom:8px}
+.desc{font-size:14.5px;color:#4a5568;margin-bottom:28px;line-height:1.7}
+.price-tag{font-size:13px;color:#6c63ff;font-weight:800;margin-bottom:22px}
+.lang-chosen{display:inline-flex;align-items:center;gap:8px;background:#eef2ff;color:#3730a3;font-weight:800;font-size:13px;padding:8px 18px;border-radius:99px;margin-bottom:24px}
+
+/* AUTO DOWNLOAD (product has notes in chosen language) */
+.download-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;background:linear-gradient(135deg,#6c63ff,#ff6b6b);color:#fff;font-size:16px;font-weight:900;border-radius:14px;text-decoration:none;box-shadow:0 12px 30px rgba(108,99,255,0.35);transition:transform 150ms ease;margin-bottom:14px}
+.download-btn:hover{transform:translateY(-3px)}
+
+/* WHATSAPP FALLBACK (product NOT in chosen language) */
+.whatsapp-fallback{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border-radius:18px;padding:28px 24px;margin-bottom:16px}
+.wf-icon{font-size:50px;margin-bottom:10px}
+.wf-title{font-size:20px;font-weight:900;margin-bottom:8px}
+.wf-desc{font-size:14px;line-height:1.6;opacity:0.95;margin-bottom:18px}
+.wf-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;background:#fff;color:#128c7e;font-size:15px;font-weight:900;border-radius:12px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.15)}
+.wf-timer{font-size:13px;font-weight:700;margin-top:12px;opacity:0.9}
+
+.whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:46px;background:#25d366;color:#fff;font-size:14px;font-weight:800;border-radius:12px;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,0.3);margin-bottom:22px}
+.note{font-size:12px;color:#94a3b8;line-height:1.6}
+.trust{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
+.trust span{background:#ecfdf5;color:#047857;font-size:11.5px;font-weight:800;padding:6px 12px;border-radius:8px;border:1px solid #a7f3d0}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="emoji" id="emoji">✅</div>
+  <div class="badge">✅ Payment Successful</div>
+  <h1 id="title">Loading...</h1>
+  <div class="price-tag" id="price">Payment Confirmed</div>
+  <div class="success">🎉 खूप आभारी आहोत! / Thank you!</div>
+  <div class="lang-chosen" id="lang-chosen"></div>
+  <div id="content-area"><p class="desc">Loading...</p></div>
+  <div class="trust">
+    <span>🔒 Razorpay Secure</span>
+    <span>📲 WhatsApp Support</span>
+  </div>
+  <p class="note">© Knikvira Digital • Krishna Jogdand, Pune<br>📲 8421532744</p>
+</div>
+
+<script>
+/* === SMART DOWNLOAD ENGINE === */
+/* PRODUCTS with trilingual notes (auto-download available) */
+var TRILINGUAL_PRODUCTS = {
+  'maharashtra-gk-atlas-ebook': {title:'महाराष्ट्र भूगोल व जिल्हावार अटलास',emoji:'🗺️',price:'Rs.99',downloadUrl:'/atlas-tri.html',langs:['hi','mr','en']},
+  'ncert-foundation-notes': {title:'NCERT Foundation Notes',emoji:'📑',price:'Rs.149',downloadUrl:'/ncert-foundation-notes.html',langs:['hi','mr','en']},
+  'police-bharti-question-bank': {title:'पोलीस भरती Question Bank',emoji:'🏃',price:'Rs.149',downloadUrl:'/police-bharti-question-bank.html',langs:['hi','mr','en']},
+  'talathi-vocabulary-master': {title:'तलाठी Vocabulary Master',emoji:'📖',price:'Rs.99',downloadUrl:'/talathi-vocabulary-master.html',langs:['hi','mr','en']},
+  'upsc-prelims-master-book': {title:'UPSC Prelims PYQ Master',emoji:'✍️',price:'Rs.149',downloadUrl:'/upsc-prelims-master-book.html',langs:['hi','mr','en']},
+  'mpsc-rajyaseva-study-kit': {title:'MPSC राज्यसेवा Study Kit',emoji:'🏛️',price:'Rs.199',downloadUrl:'/mpsc-rajyaseva-study-kit.html',langs:['hi','mr','en']},
+  'mpsc-group-c-vyakaran': {title:'MPSC Group C Vyakaran',emoji:'📘',price:'Rs.99',downloadUrl:'/mpsc-group-c-vyakaran.html',langs:['hi','mr','en']}
+};
+
+/* PRODUCTS with notes only in specific language */
+var SINGLE_LANG_PRODUCTS = {
+  'mpsc-polity-quick-notes': {title:'MPSC Polity Quick Notes',emoji:'🏛️',price:'Rs.49',langs:['mr','en']},
+  'upsc-current-affairs-starter': {title:'UPSC Current Affairs Starter',emoji:'📰',price:'Rs.49',langs:['mr','en']},
+  'mpsc-previous-year-questions': {title:'MPSC Previous Year Questions',emoji:'✍️',price:'Rs.99',langs:['mr','en']},
+  'upsc-polity-mcq-set': {title:'UPSC Polity MCQ Set',emoji:'🎯',price:'Rs.99',langs:['mr','en']},
+  'csat-practice-starter': {title:'CSAT Practice Starter',emoji:'🧮',price:'Rs.49',langs:['mr','en']},
+  'maharashtra-gk-revision-pack': {title:'Maharashtra GK Revision Pack',emoji:'🚩',price:'Rs.99',langs:['mr','en']},
+  'police-bharti-complete-guide': {title:'Police Bharti Complete Guide',emoji:'🏃',price:'Rs.99',langs:['mr','en']},
+  'talathi-bharti-guide': {title:'Talathi Bharti Guide',emoji:'📋',price:'Rs.99',langs:['mr','en']},
+  'job-application-kit-for-freshers': {title:'Job Application Kit',emoji:'🤝',price:'Rs.49',langs:['mr','en']},
+  '30-days-english-speaking-practice': {title:'30 Days English Speaking',emoji:'🗣️',price:'Rs.49',langs:['mr','en']},
+  'student-study-planner': {title:'Student Study Planner',emoji:'📅',price:'Rs.49',langs:['mr','en']},
+  'handwritten-quick-notes': {title:'हस्तलिखित वही-नोट्स (Master Revision)',emoji:'✍️',price:'Rs.99',langs:['mr','en']},
+  'handwritten-vahi-notes-vol2': {title:'हस्तलिखित वही-नोट्स — भाग २',emoji:'✍️',price:'Rs.99',langs:['mr','hi','en']}
+};
+
+/* PRODUCTS with NO notes yet (WhatsApp fallback) */
+var WHATSAPP_PRODUCTS = {
+  'mpsc-rajyaseva-study-kit': {title:'MPSC राज्यसेवा Study Kit',emoji:'🏛️',price:'Rs.199'},
+  'upsc-prelims-master-book': {title:'UPSC Prelims PYQ Master Book',emoji:'✍️',price:'Rs.149'},
+  'police-bharti-question-bank': {title:'पोलीस भरती Question Bank',emoji:'🏃',price:'Rs.149'},
+  'talathi-vocabulary-master': {title:'तलाठी Vocabulary Master',emoji:'📖',price:'Rs.99'},
+  'ncert-foundation-notes': {title:'NCERT Foundation Notes',emoji:'📑',price:'Rs.149'},
+  'bundle-mega-super': {title:'Super Mega Bundle (सर्व 18+ PDF एकत्र)',emoji:'🔱',price:'Rs.999'},
+  'bundle-police-ultimate': {title:'पोलीस भरती Ultimate Combo',emoji:'🎁',price:'Rs.249'},
+  'bundle-talathi-winner': {title:'तलाठी भरती Winner Combo',emoji:'🎁',price:'Rs.199'},
+  'bundle-mpsc-upsc-super': {title:'MPSC + UPSC Super Combo',emoji:'🎁',price:'Rs.249'}
+};
+
+var LANG_NAMES = {hi:'हिंदी', mr:'मराठी', en:'English'};
+var LANG_FLAGS = {hi:'🇮🇳', mr:'🇮🇳', en:'🇬🇧'};
+var WA = '918421532744';
+
+function getParam(name){
+  var u = new URL(window.location.href);
+  return u.searchParams.get(name);
+}
+
+function waLink(msg){
+  return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+}
+
+function init(){
+  /* detect slug from filename */
+  var path = window.location.pathname;
+  var slug = getParam('slug') || path.substring(path.lastIndexOf('/')+1).replace('.html','');
+  var lang = getParam('lang') || 'mr';
+
+  /* find product info */
+  var info = TRILINGUAL_PRODUCTS[slug] || SINGLE_LANG_PRODUCTS[slug] || WHATSAPP_PRODUCTS[slug] || {title:'Your Notes',emoji:'📚',price:''};
+
+  /* set header */
+  document.getElementById('emoji').textContent = info.emoji;
+  document.getElementById('title').textContent = info.title;
+  document.getElementById('price').textContent = info.price + ' • Payment Confirmed';
+  document.getElementById('lang-chosen').innerHTML = '🌐 निवडलेली भाषा / Selected: ' + (LANG_FLAGS[lang]||'') + ' ' + (LANG_NAMES[lang]||'Marathi');
+
+  var area = document.getElementById('content-area');
+
+  /* CHECK: does product have notes in chosen language? */
+  var hasNotes = false;
+  var autoDownload = false;
+  if (TRILINGUAL_PRODUCTS[slug] && TRILINGUAL_PRODUCTS[slug].langs.indexOf(lang) >= 0){
+    hasNotes = true; autoDownload = true;
+  } else if (SINGLE_LANG_PRODUCTS[slug] && SINGLE_LANG_PRODUCTS[slug].langs.indexOf(lang) >= 0){
+    hasNotes = true;
+  }
+
+  if (hasNotes && autoDownload){
+    /* === AUTO DOWNLOAD (Atlas trilingual) === */
+    area.innerHTML = '<p class="desc">तुमची payment यशस्वी! खालील बटणावर click करा आणि तुमची ' + (LANG_NAMES[lang]||'मराठी') + ' notes download करा. (Print → Save as PDF करून save करा.)</p>'
+      + '<a class="download-btn" href="' + TRILINGUAL_PRODUCTS[slug].downloadUrl + '" target="_blank">⬇️ ' + (LANG_NAMES[lang]||'मराठी') + ' Notes Download करा</a>'
+      + '<a class="whatsapp-btn" href="' + waLink("Hi, '" + info.title + "' ("+info.price+") chi payment zali aahe. Mala " + (LANG_NAMES[lang]||'मराठी') + " madhe notes hawe.") + '" target="_blank">📲 Problem असेल तर WhatsApp करा</a>';
+  }
+  else if (hasNotes){
+    /* === SINGLE LANGUAGE NOTES (download link exists) === */
+    area.innerHTML = '<p class="desc">तुमची payment यशस्वी! खालील बटणावर click करा आणि तुमची notes download करा.</p>'
+      + '<a class="download-btn" href="/' + slug + '.html" target="_blank">⬇️ Notes Download करा</a>'
+      + '<a class="whatsapp-btn" href="' + waLink("Hi, '" + info.title + "' chi payment zali aahe.") + '" target="_blank">📲 Problem असेल तर WhatsApp करा</a>';
+  }
+  else {
+    /* === WHATSAPP FALLBACK (no notes in chosen language yet) === */
+    var msg = "Hi Krishna, mala '" + info.title + "' (" + info.price + ") chi payment successful zali aahe. Kripya mala " + (LANG_NAMES[lang]||'मराठी') + " madhe notes PDF pathva.";
+    area.innerHTML = '<div class="whatsapp-fallback">'
+      + '<div class="wf-icon">📲</div>'
+      + '<div class="wf-title">तुमची PDF 5 मिनिटांत WhatsApp वर मिळेल!</div>'
+      + '<div class="wf-desc">तुम्ही <strong>' + (LANG_NAMES[lang]||'मराठी') + '</strong> भाषा निवडली आहे. तुमची notes PDF तयार होत आहे — खालील button दाबा आणि आम्ही <strong>5 मिनिटांत</strong> तुम्हाला WhatsApp वर PDF पाठवू.</div>'
+      + '<a class="wf-btn" href="' + waLink(msg) + '" target="_blank">📲 WhatsApp वर PDF मागवा (5 मिनिटांत)</a>'
+      + '<div class="wf-timer">⏰ वेळ: 10 AM – 9 PM | 📍 Pune</div>'
+      + '</div>'
+      + '<a class="whatsapp-btn" href="' + waLink(msg) + '" target="_blank">📲 इतर काही problem असेल तर WhatsApp करा</a>';
+  }
+}
+init();
+</script>
+</body>
+</html>

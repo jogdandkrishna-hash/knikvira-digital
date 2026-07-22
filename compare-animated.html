@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="mr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore Study Packages | Knikvira Digital</title>
+  <meta name="description" content="Compare MPSC, UPSC, Police Bharti study packages with amazing interactive features">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ANIMATED BACKGROUND */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      z-index: 0;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* HEADER WITH ANIMATION */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      animation: slideDown 0.8s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    nav a {
+      margin: 0 20px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* MAIN TITLE WITH ANIMATION */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      color: white;
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: scaleIn 0.8s ease 0.2s both;
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .hero p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      animation: fadeIn 1s ease 0.4s both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* COMPARISON CARDS WITH AMAZING ANIMATIONS */
+    .comparison-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      animation: cardPopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+      transition: all 0.3s ease;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes cardPopIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) rotateY(-20deg);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) rotateY(0);
+      }
+    }
+
+    .card:hover {
+      transform: translateY(-20px) scale(1.05);
+      box-shadow: 0 40px 80px rgba(102, 126, 234, 0.4);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: rotate(45deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .card-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      animation: iconBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .card h2 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 15px;
+      animation: slideInRight 0.6s ease 0.3s both;
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .price {
+      font-size: 32px;
+      color: #667eea;
+      font-weight: 900;
+      margin: 20px 0;
+      animation: priceGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes priceGlow {
+      0%, 100% {
+        text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+      }
+      50% {
+        text-shadow: 0 0 30px rgba(102, 126, 234, 1);
+      }
+    }
+
+    .features {
+      text-align: left;
+      margin: 30px 0;
+      list-style: none;
+    }
+
+    .features li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      color: #555;
+      animation: slideInLeft 0.6s ease backwards;
+    }
+
+    .features li:nth-child(1) { animation-delay: 0.4s; }
+    .features li:nth-child(2) { animation-delay: 0.5s; }
+    .features li:nth-child(3) { animation-delay: 0.6s; }
+    .features li:nth-child(4) { animation-delay: 0.7s; }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .features li::before {
+      content: '✓ ';
+      color: #667eea;
+      font-weight: bold;
+      margin-right: 10px;
+      animation: checkmark 0.5s ease;
+    }
+
+    @keyframes checkmark {
+      0% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* BUTTONS WITH RIPPLE EFFECT */
+    .btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* RATING STARS ANIMATION */
+    .rating {
+      font-size: 20px;
+      margin: 15px 0;
+    }
+
+    .star {
+      display: inline-block;
+      color: #ffd700;
+      animation: starTwinkle 1.5s ease-in-out infinite;
+    }
+
+    .star:nth-child(1) { animation-delay: 0s; }
+    .star:nth-child(2) { animation-delay: 0.2s; }
+    .star:nth-child(3) { animation-delay: 0.4s; }
+    .star:nth-child(4) { animation-delay: 0.6s; }
+    .star:nth-child(5) { animation-delay: 0.8s; }
+
+    @keyframes starTwinkle {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+      }
+    }
+
+    /* BADGE ANIMATION */
+    .badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 12px;
+      animation: badgePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(245, 87, 108, 0.7);
+      }
+      50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(245, 87, 108, 0);
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      animation: slideUp 0.8s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      .comparison-container {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .card {
+        padding: 30px 20px;
+      }
+    }
+
+    /* SCROLL ANIMATION */
+    .fade-in-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-bg"></div>
+
+  <div class="content">
+    <!-- HEADER -->
+    <header>
+      <div class="header-container">
+        <div class="logo">🎓 Knikvira Digital</div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="#compare">Compare</a>
+          <a href="blog.html">Blog</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <h1>📊 तुमचा परीक्षा तयारीचा साथी</h1>
+      <p>स्वस्त, उच्च दर्जाचे PDF Notes - सर्व परीक्षांसाठी</p>
+    </section>
+
+    <!-- COMPARISON CARDS -->
+    <section id="compare" class="comparison-container">
+      <!-- CARD 1 -->
+      <div class="card">
+        <div class="badge">Starter</div>
+        <div class="card-icon">📚</div>
+        <h2>Individual Notes</h2>
+        <div class="price">₹49-99</div>
+        <div class="rating">
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+        </div>
+        <ul class="features">
+          <li>1-2 Study Materials</li>
+          <li>Quick Notes</li>
+          <li>Lifetime Access</li>
+          <li>Instant Download</li>
+        </ul>
+        <button class="btn"><span>अभी खरीदें</span></button>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="card">
+        <div class="badge">Popular ⭐</div>
+        <div class="card-icon">🎯</div>
+        <h2>Complete Bundle</h2>
+        <div class="price">₹199-299</div>
+        <div class="rating">
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+        </div>
+        <ul class="features">
+          <li>3-5 Study Materials</li>
+          <li>MCQ Practice Sets</li>
+          <li>Previous Year Papers</li>
+          <li>Email Support</li>
+        </ul>
+        <button class="btn"><span>सुझाविले! खरीदें</span></button>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="card">
+        <div class="badge">Premium 💎</div>
+        <div class="card-icon">👑</div>
+        <h2>Premium Package</h2>
+        <div class="price">₹399-499</div>
+        <div class="rating">
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+        </div>
+        <ul class="features">
+          <li>6+ Study Materials</li>
+          <li>Complete MCQ Sets</li>
+          <li>Topic-wise Analysis</li>
+          <li>24/7 Support</li>
+        </ul>
+        <button class="btn"><span>Premium घ्या</span></button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2024 Knikvira Digital | सर्व हक्क सुरक्षित</p>
+    </footer>
+  </div>
+
+  <script>
+    // SMOOTH SCROLL ANIMATION
+    window.addEventListener('scroll', function() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          card.classList.add('visible');
+        }
+      });
+    });
+
+    // BUTTON RIPPLE EFFECT
+    document.querySelectorAll('.btn').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+      });
+    });
+
+    // CURSOR ANIMATION
+    const cursor = document.createElement('div');
+    cursor.style.position = 'fixed';
+    cursor.style.width = '20px';
+    cursor.style.height = '20px';
+    cursor.style.border = '2px solid #667eea';
+    cursor.style.border-radius = '50%';
+    cursor.style.pointer-events = 'none';
+    cursor.style.z-index = '9999';
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = (e.clientX - 10) + 'px';
+      cursor.style.top = (e.clientY - 10) + 'px';
+    });
+  </script>
+</body>
+</html>
