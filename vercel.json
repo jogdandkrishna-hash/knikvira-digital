@@ -1,12 +1,29 @@
 {
+  "rewrites": [
+    { "source": "/products", "destination": "/products.html" },
+    { "source": "/shop", "destination": "/products.html" },
+    { "source": "/store", "destination": "/products.html" },
+    { "source": "/kits", "destination": "/products.html" },
+    { "source": "/exam-library", "destination": "/products.html" },
+    { "source": "/all-books", "destination": "/products.html" },
+    { "source": "/catalog", "destination": "/products.html" },
+    { "source": "/mpsc-previous-year-questions-info", "destination": "/mpsc-previous-year-questions-info.html" },
+    { "source": "/mpsc-polity-quick-notes-info", "destination": "/mpsc-polity-quick-notes-info.html" },
+    { "source": "/upsc-polity-mcq-set-info", "destination": "/upsc-polity-mcq-set-info.html" },
+    { "source": "/csat-practice-starter-info", "destination": "/csat-practice-starter-info.html" },
+    { "source": "/upsc-current-affairs-starter-info", "destination": "/upsc-current-affairs-starter-info.html" },
+    { "source": "/maharashtra-gk-revision-pack-info", "destination": "/maharashtra-gk-revision-pack-info.html" },
+    { "source": "/police-bharti-complete-guide-info", "destination": "/police-bharti-complete-guide-info.html" },
+    { "source": "/talathi-bharti-guide-info", "destination": "/talathi-bharti-guide-info.html" },
+    { "source": "/30-days-english-speaking-practice-info", "destination": "/30-days-english-speaking-practice-info.html" },
+    { "source": "/job-application-kit-for-freshers-info", "destination": "/job-application-kit-for-freshers-info.html" },
+    { "source": "/student-study-planner-info", "destination": "/student-study-planner-info.html" }
+  ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/products.html",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     }
   ]
