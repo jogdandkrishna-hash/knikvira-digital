@@ -59,7 +59,7 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.kd-product-card, .kd-exam-card, .kd-testimonial-card, .kd-blog-card, .kd-sample-card, .kd-info-card').forEach(function(el) {
+  document.querySelectorAll('.kd-product-card, .kd-exam-card, .kd-testimonial-card, .kd-blog-card, .kd-sample-card, .kd-info-card, .kd-related-card').forEach(function(el) {
     el.style.opacity = '0';
     animObserver.observe(el);
   });
