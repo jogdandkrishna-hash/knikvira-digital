@@ -1,372 +1,365 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Compare Study Materials | MPSC UPSC | Knikvira Digital</title>
-  <meta name="description" content="Compare our study packages. Individual notes vs bundles - choose what's right for you.">
-  <link rel="canonical" href="https://knikvira-digital.vercel.app/compare.html">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-en="Compare Study Packages | Knikvira Digital" data-mr="Study Packages तुलना | Knikvira Digital">Study Packages तुलना | Knikvira Digital</title>
+  <meta name="description" content="Knikvira Digital च्या Study Kits ची तुलना करा — Individual Notes, Bundles, Complete Packages. तुमच्या परीक्षेसाठी सर्वोत्तम निवड करा." />
+  <link rel="canonical" href="https://www.knikviradigital.in/compare.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f0f4f8;
-      color: #0d1b2a;
-    }
-    
-    .header {
-      background: linear-gradient(135deg, #6c63ff, #4c46b8);
-      color: #fff;
-      padding: 60px 20px;
+    .kd-compare-hero {
+      background: var(--gradient-hero);
+      padding: calc(var(--nav-height) + 60px) var(--spacing-lg) 60px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .header h1 {
-      margin: 0 0 10px;
-      font-size: 42px;
+    .kd-compare-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(79,70,229,0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 60%, rgba(245,158,11,0.1) 0%, transparent 40%);
+      pointer-events: none;
     }
-    .header p {
-      margin: 0;
-      font-size: 16px;
-      opacity: 0.9;
+    .kd-compare-hero-emoji { font-size: 56px; margin-bottom: var(--spacing-md); }
+    .kd-compare-hero-title {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 900; color: white;
+      margin-bottom: var(--spacing-sm);
     }
-    
-    .container {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 40px 20px;
+    .kd-compare-hero-desc {
+      font-size: var(--font-size-md); color: var(--text-inverse-muted);
+      max-width: 600px; margin: 0 auto;
     }
-    
-    .section {
-      margin-bottom: 50px;
+    .kd-compare-body {
+      max-width: 1100px;
+      margin: -40px auto 0;
+      padding: 0 var(--spacing-lg) var(--spacing-2xl);
+      position: relative; z-index: 2;
     }
-    
-    .section h2 {
-      margin: 0 0 20px;
-      font-size: 28px;
-      color: #0d1b2a;
+    .kd-compare-card {
+      background: var(--surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      margin-bottom: var(--spacing-2xl);
     }
-    
-    .comparison-table {
-      background: #fff;
-      border-radius: 12px;
-      overflow: auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
+    .kd-compare-card-title {
+      font-size: var(--font-size-xl);
+      font-weight: 800;
+      color: var(--text);
+      padding: var(--spacing-lg) var(--spacing-lg) 0;
+      margin-bottom: var(--spacing-md);
     }
-    
-    table {
+    /* Comparison Table */
+    .kd-compare-table {
       width: 100%;
       border-collapse: collapse;
     }
-    
-    th, td {
-      padding: 16px;
+    .kd-compare-table th {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 14px 18px;
+      font-weight: 700;
+      font-size: var(--font-size-sm);
       text-align: left;
-      border-bottom: 1px solid #e2e8f0;
     }
-    
-    th {
-      background: #f8f9fb;
-      font-weight: 700;
-      color: #0d1b2a;
+    .kd-compare-table td {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border-light);
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
     }
-    
-    tr:last-child td {
-      border-bottom: none;
+    .kd-compare-table tr:last-child td { border-bottom: none; }
+    .kd-compare-table tr:hover td { background: var(--bg-soft); }
+    .kd-compare-table .feature-name {
+      font-weight: 700; color: var(--text);
     }
-    
-    .feature-name {
-      font-weight: 700;
-      color: #0d1b2a;
-      min-width: 200px;
-    }
-    
-    .check-mark {
-      color: #25d366;
-      font-weight: 900;
-      font-size: 18px;
-    }
-    
-    .cross-mark {
-      color: #ff6b6b;
-      font-weight: 900;
-      font-size: 18px;
-    }
-    
-    .value {
-      color: #4a5568;
-    }
-    
-    .btn {
-      display: inline-block;
-      padding: 10px 16px;
-      background: #6c63ff;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 700;
-      text-decoration: none;
-      transition: background 200ms;
-      font-size: 12px;
-    }
-    .btn:hover {
-      background: #4c46b8;
-    }
-    
-    .feature-grid {
+    .kd-check { color: var(--success); font-weight: 900; font-size: 18px; }
+    .kd-cross { color: var(--danger); font-weight: 900; font-size: 18px; }
+    .kd-value { color: var(--primary); font-weight: 700; }
+    /* Feature Grid */
+    .kd-feature-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--spacing-lg);
+      padding: var(--spacing-lg);
     }
-    
-    .feature-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .kd-feature-item {
+      background: var(--bg-soft);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      border: 1px solid var(--border-light);
+      transition: all 0.25s ease;
     }
-    
-    .feature-card h3 {
-      margin: 0 0 10px;
-      color: #6c63ff;
-      font-size: 18px;
+    .kd-feature-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(79,70,229,0.2);
     }
-    
-    .feature-card p {
-      margin: 0;
-      color: #4a5568;
-      font-size: 14px;
-      line-height: 1.6;
+    .kd-feature-item h3 {
+      font-size: var(--font-size-md); font-weight: 800;
+      color: var(--primary); margin-bottom: 8px;
     }
-    
-    .faq {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .kd-feature-item p {
+      font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.7;
     }
-    
-    .faq h3 {
-      margin: 0 0 10px;
-      color: #0d1b2a;
-      font-size: 16px;
+    /* FAQ */
+    .kd-faq-list { padding: var(--spacing-lg); }
+    .kd-faq-item {
+      border-bottom: 1px solid var(--border-light);
+      padding: var(--spacing-md) 0;
     }
-    
-    .faq p {
-      margin: 0;
-      color: #4a5568;
-      font-size: 14px;
-      line-height: 1.6;
+    .kd-faq-item:last-child { border-bottom: none; }
+    .kd-faq-q {
+      font-size: var(--font-size-base); font-weight: 700;
+      color: var(--text); margin-bottom: 8px;
+      cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center;
     }
-    
-    .footer {
-      background: #102923;
-      color: #fff;
-      padding: 30px 20px;
+    .kd-faq-q::after { content: '▸'; font-size: 14px; color: var(--primary); transition: transform 0.2s; }
+    .kd-faq-item.open .kd-faq-q::after { transform: rotate(90deg); }
+    .kd-faq-a {
+      font-size: var(--font-size-sm); color: var(--text-secondary);
+      line-height: 1.7; max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .kd-faq-item.open .kd-faq-a { max-height: 200px; }
+    /* Exam Cards */
+    .kd-exam-compare-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--spacing-md);
+      padding: var(--spacing-lg);
+    }
+    .kd-exam-compare-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
       text-align: center;
-      margin-top: 40px;
+      transition: all 0.25s ease;
+      text-decoration: none;
     }
-    
+    .kd-exam-compare-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(79,70,229,0.2);
+    }
+    .kd-exam-compare-icon { font-size: 32px; margin-bottom: 8px; }
+    .kd-exam-compare-name { font-size: var(--font-size-md); font-weight: 800; color: var(--text); }
+    .kd-exam-compare-count { font-size: var(--font-size-sm); color: var(--text-muted); margin-top: 4px; }
+    .kd-exam-compare-price { font-size: var(--font-size-sm); font-weight: 800; color: var(--primary); margin-top: 4px; }
     @media (max-width: 768px) {
-      th, td {
-        padding: 12px 8px;
-        font-size: 13px;
-      }
-      .header h1 {
-        font-size: 28px;
-      }
-      .feature-name {
-        min-width: 120px;
-      }
+      .kd-compare-table { font-size: 12px; }
+      .kd-compare-table th, .kd-compare-table td { padding: 8px 10px; }
+      .kd-exam-compare-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) {
+      .kd-exam-compare-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>🔄 Compare Study Packages</h1>
-    <p>Choose the right package for your exam preparation</p>
-  </div>
 
-  <div class="container">
-    <!-- Feature Comparison Table -->
-    <div class="section">
-      <h2>Feature Comparison</h2>
-      <div class="comparison-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>Individual Notes<br><span style="font-size: 12px;">₹49-99</span></th>
-              <th>Study Bundles<br><span style="font-size: 12px;">₹199-299</span></th>
-              <th>Complete Packages<br><span style="font-size: 12px;">₹399-499</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="feature-name">📄 Study Materials</td>
-              <td><span class="check-mark">✓</span> 1-2</td>
-              <td><span class="check-mark">✓</span> 3-5</td>
-              <td><span class="check-mark">✓</span> 6+</td>
-            </tr>
-            <tr>
-              <td class="feature-name">📝 Quick Notes</td>
-              <td><span class="check-mark">✓</span></td>
-              <td><span class="check-mark">✓</span></td>
-              <td><span class="check-mark">✓</span></td>
-            </tr>
-            <tr>
-              <td class="feature-name">❓ MCQ Practice</td>
-              <td><span class="cross-mark">✗</span></td>
-              <td><span class="check-mark">✓</span></td>
-              <td><span class="check-mark">✓</span></td>
-            </tr>
-            <tr>
-              <td class="feature-name">📊 Previous Year Papers</td>
-              <td><span class="cross-mark">✗</span></td>
-              <td><span class="check-mark">✓</span></td>
-              <td><span class="check-mark">✓</span></td>
-            </tr>
-            <tr>
-              <td class="feature-name">⏱️ Time-saving Summaries</td>
-              <td><span class="cross-mark">✗</span></td>
-              <td><span class="check-mark">✓</span></td>
-              <td><span class="check-mark">✓</span></td>
-            </tr>
-            <tr>
-              <td class="feature-name">🎯 Topic-wise Analysis</td>
-              <td><span class="cross-mark">✗</span></td>
-              <td><span class="cross-mark">✗</span></td>
-              <td><span class="check-mark">✓</span></td>
-            </tr>
-            <tr>
-              <td class="feature-name">📧 Email Support</td>
-              <td><span class="cross-mark">✗</span></td>
-              <td><span class="check-mark">✓</span></td>
-              <td><span class="check-mark">✓</span></td>
-            </tr>
-            <tr>
-              <td class="feature-name">🔄 Lifetime Access</td>
-              <td><span class="check-mark">✓</span></td>
-              <td><span class="check-mark">✓</span></td>
-              <td><span class="check-mark">✓</span></td>
-            </tr>
-            <tr>
-              <td class="feature-name">💰 Best Value</td>
-              <td class="value">Quick start</td>
-              <td class="value">Most popular</td>
-              <td class="value">Complete prep</td>
-            </tr>
-          </tbody>
-        </table>
+  <nav class="kd-nav" id="kdNav">
+    <div class="kd-nav-inner">
+      <a href="https://www.knikviradigital.in/" class="kd-nav-brand">
+        <div class="kd-nav-brand-icon">K</div>
+        <div class="kd-nav-brand-text"><span>KNIKVIRA</span> DIGITAL</div>
+      </a>
+      <div class="kd-nav-links">
+        <a href="https://www.knikviradigital.in/products.html" class="kd-nav-link" data-en="All Kits" data-mr="सर्व Kits">सर्व Kits</a>
+        <a href="https://www.knikviradigital.in/free-pyq.html" class="kd-nav-link" data-en="Free Samples" data-mr="Free Samples">Free Samples</a>
+        <a href="https://www.knikviradigital.in/blog.html" class="kd-nav-link" data-en="Blog" data-mr="Blog">Blog</a>
+        <a href="https://www.knikviradigital.in/about.html" class="kd-nav-link" data-en="About Us" data-mr="आमच्याबद्दल">आमच्याबद्दल</a>
+        <div class="kd-lang-switcher">
+          <button class="kd-lang-btn active" data-lang="mr">मराठी</button>
+          <button class="kd-lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="https://wa.me/918421532744" class="kd-nav-cta" data-en="💬 WhatsApp" data-mr="💬 WhatsApp">💬 WhatsApp</a>
+      </div>
+      <button class="kd-nav-mobile-btn" id="kdMobileBtn">☰</button>
+    </div>
+    <div class="kd-nav-mobile-menu" id="kdMobileMenu">
+      <a href="https://www.knikviradigital.in/" data-en="🏠 Home" data-mr="🏠 मुख्यपृष्ठ">🏠 मुख्यपृष्ठ</a>
+      <a href="https://www.knikviradigital.in/products.html" data-en="📚 All Kits" data-mr="📚 सर्व Kits">📚 सर्व Kits</a>
+      <a href="https://www.knikviradigital.in/free-pyq.html" data-en="🎁 Free Samples" data-mr="🎁 Free Samples">🎁 Free Samples</a>
+      <a href="https://www.knikviradigital.in/about.html" data-en="👨‍💻 About" data-mr="👨‍💻 आमच्याबद्दल">👨‍💻 आमच्याबद्दल</a>
+      <a href="https://wa.me/918421532744" style="color:var(--accent-light)">💬 WhatsApp</a>
+      <div class="kd-lang-switcher-mobile">
+        <div class="kd-lang-switcher" style="margin:0">
+          <button class="kd-lang-btn-mobile active" data-lang="mr">मराठी</button>
+          <button class="kd-lang-btn-mobile" data-lang="en">English</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="kd-compare-hero">
+    <div class="kd-compare-hero-emoji">🔄</div>
+    <h1 class="kd-compare-hero-title" data-en="Compare Study Packages" data-mr="Study Packages ची तुलना करा">Study Packages ची तुलना करा</h1>
+    <p class="kd-compare-hero-desc" data-en="Choose the right package for your exam preparation" data-mr="तुमच्या परीक्षेच्या तयारीसाठी योग्य पॅकेज निवडा">तुमच्या परीक्षेच्या तयारीसाठी योग्य पॅकेज निवडा</p>
+  </section>
+
+  <div class="kd-compare-body">
+
+    <!-- FEATURE COMPARISON TABLE -->
+    <div class="kd-compare-card">
+      <div class="kd-compare-card-title" data-en="Feature Comparison" data-mr="Feature तुलना">Feature तुलना</div>
+      <table class="kd-compare-table">
+        <thead>
+          <tr>
+            <th data-en="Feature" data-mr="Feature">Feature</th>
+            <th data-en="Individual Notes" data-mr="Individual Notes">Individual Notes<br/><span style="font-size:12px;opacity:0.8">₹49-99</span></th>
+            <th data-en="Study Bundles" data-mr="Study Bundles">Study Bundles<br/><span style="font-size:12px;opacity:0.8">₹199-299</span></th>
+            <th data-en="Complete Packages" data-mr="Complete Packages">Complete Packages<br/><span style="font-size:12px;opacity:0.8">₹399-499</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="feature-name">📄 Study Materials</td><td><span class="kd-check">✓</span> 1-2</td><td><span class="kd-check">✓</span> 3-5</td><td><span class="kd-check">✓</span> 6+</td></tr>
+          <tr><td class="feature-name">📝 Quick Notes</td><td><span class="kd-check">✓</span></td><td><span class="kd-check">✓</span></td><td><span class="kd-check">✓</span></td></tr>
+          <tr><td class="feature-name">❓ MCQ Practice</td><td><span class="kd-cross">✗</span></td><td><span class="kd-check">✓</span></td><td><span class="kd-check">✓</span></td></tr>
+          <tr><td class="feature-name">📊 Previous Year Papers</td><td><span class="kd-cross">✗</span></td><td><span class="kd-check">✓</span></td><td><span class="kd-check">✓</span></td></tr>
+          <tr><td class="feature-name">⏱️ Time-saving Summaries</td><td><span class="kd-cross">✗</span></td><td><span class="kd-check">✓</span></td><td><span class="kd-check">✓</span></td></tr>
+          <tr><td class="feature-name">🎯 Topic-wise Analysis</td><td><span class="kd-cross">✗</span></td><td><span class="kd-cross">✗</span></td><td><span class="kd-check">✓</span></td></tr>
+          <tr><td class="feature-name">📱 WhatsApp Support</td><td><span class="kd-check">✓</span></td><td><span class="kd-check">✓</span></td><td><span class="kd-check">✓</span></td></tr>
+          <tr><td class="feature-name">🔄 Lifetime Access</td><td><span class="kd-check">✓</span></td><td><span class="kd-check">✓</span></td><td><span class="kd-check">✓</span></td></tr>
+          <tr><td class="feature-name">💰 Best Value</td><td class="kd-value">Quick start</td><td class="kd-value">Most popular</td><td class="kd-value">Complete prep</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- BY EXAM TYPE -->
+    <div class="kd-compare-card">
+      <div class="kd-compare-card-title" data-en="By Exam Type" data-mr="परीक्षेनुसार">परीक्षेनुसार</div>
+      <div class="kd-exam-compare-grid">
+        <a href="https://www.knikviradigital.in/products.html" class="kd-exam-compare-card">
+          <div class="kd-exam-compare-icon">🏛️</div>
+          <div class="kd-exam-compare-name">MPSC</div>
+          <div class="kd-exam-compare-count" data-en="5 Bundles" data-mr="5 Bundles">5 Bundles</div>
+          <div class="kd-exam-compare-price">₹199-499</div>
+        </a>
+        <a href="https://www.knikviradigital.in/products.html" class="kd-exam-compare-card">
+          <div class="kd-exam-compare-icon">🇮🇳</div>
+          <div class="kd-exam-compare-name">UPSC</div>
+          <div class="kd-exam-compare-count" data-en="4 Bundles" data-mr="4 Bundles">4 Bundles</div>
+          <div class="kd-exam-compare-price">₹199-499</div>
+        </a>
+        <a href="https://www.knikviradigital.in/products.html" class="kd-exam-compare-card">
+          <div class="kd-exam-compare-icon">👮</div>
+          <div class="kd-exam-compare-name">Police Bharti</div>
+          <div class="kd-exam-compare-count" data-en="3 Bundles" data-mr="3 Bundles">3 Bundles</div>
+          <div class="kd-exam-compare-price">₹199-399</div>
+        </a>
+        <a href="https://www.knikviradigital.in/products.html" class="kd-exam-compare-card">
+          <div class="kd-exam-compare-icon">🌾</div>
+          <div class="kd-exam-compare-name">Talathi Bharti</div>
+          <div class="kd-exam-compare-count" data-en="2 Bundles" data-mr="2 Bundles">2 Bundles</div>
+          <div class="kd-exam-compare-price">₹199-299</div>
+        </a>
       </div>
     </div>
 
-    <!-- Exam Type Comparison -->
-    <div class="section">
-      <h2>By Exam Type</h2>
-      <div class="comparison-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Exam</th>
-              <th>Available Bundles</th>
-              <th>Price Range</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="feature-name">🏛️ MPSC</td>
-              <td class="value">5 bundles</td>
-              <td class="value">₹199-499</td>
-              <td><button class="btn">View →</button></td>
-            </tr>
-            <tr>
-              <td class="feature-name">🇮🇳 UPSC</td>
-              <td class="value">4 bundles</td>
-              <td class="value">₹199-499</td>
-              <td><button class="btn">View →</button></td>
-            </tr>
-            <tr>
-              <td class="feature-name">👮 Police Bharti</td>
-              <td class="value">3 bundles</td>
-              <td class="value">₹199-399</td>
-              <td><button class="btn">View →</button></td>
-            </tr>
-            <tr>
-              <td class="feature-name">📋 Talathi Bharti</td>
-              <td class="value">2 bundles</td>
-              <td class="value">₹199-299</td>
-              <td><button class="btn">View →</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Why Choose Us -->
-    <div class="section">
-      <h2>Why Choose Knikvira Digital?</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
+    <!-- WHY CHOOSE US -->
+    <div class="kd-compare-card">
+      <div class="kd-compare-card-title" data-en="Why Choose Knikvira Digital?" data-mr="Knikvira Digital का निवडावे?">Knikvira Digital का निवडावे?</div>
+      <div class="kd-feature-grid">
+        <div class="kd-feature-item">
           <h3>💰 Affordable Pricing</h3>
-          <p>Starting from just ₹49, we make quality study materials accessible to everyone.</p>
+          <p data-en="Starting from just ₹49, we make quality study materials accessible to everyone." data-mr="फक्त ₹49 पासून सुरू — दर्जेदार study material सर्वांसाठी उपलब्ध.">फक्त ₹49 पासून सुरू — दर्जेदार study material सर्वांसाठी उपलब्ध.</p>
         </div>
-        <div class="feature-card">
+        <div class="kd-feature-item">
           <h3>⚡ Instant Delivery</h3>
-          <p>Download your materials instantly after payment. No waiting, no shipping!</p>
+          <p data-en="Download your materials instantly after payment. No waiting, no shipping!" data-mr="Payment नंतर लगेच download. कोणतीही प्रतीक्षा नाही!">Payment नंतर लगेच download. कोणतीही प्रतीक्षा नाही!</p>
         </div>
-        <div class="feature-card">
+        <div class="kd-feature-item">
           <h3>✍️ Expert Content</h3>
-          <p>Created by successful exam candidates and subject matter experts.</p>
+          <p data-en="Created by successful exam candidates and subject matter experts." data-mr="यशस्वी परीक्षा उमेदवार आणि विषय तज्ञांद्वारे तयार.">यशस्वी परीक्षा उमेदवार आणि विषय तज्ञांद्वारे तयार.</p>
         </div>
-        <div class="feature-card">
+        <div class="kd-feature-item">
           <h3>🎯 Focused Notes</h3>
-          <p>Concentrated on high-yield topics that appear in exams regularly.</p>
+          <p data-en="Concentrated on high-yield topics that appear in exams regularly." data-mr="परीक्षेत वारंवार येणाऱ्या महत्त्वाच्या विषयांवर केंद्रित.">परीक्षेत वारंवार येणाऱ्या महत्त्वाच्या विषयांवर केंद्रित.</p>
         </div>
-        <div class="feature-card">
+        <div class="kd-feature-item">
           <h3>📱 All Formats</h3>
-          <p>Access PDFs on any device - phone, tablet, or computer.</p>
+          <p data-en="Access PDFs on any device — phone, tablet, or computer." data-mr="कोणत्याही device वर PDF वाचा — मोबाईल, टॅबलेट किंवा कंप्युटर.">कोणत्याही device वर PDF वाचा — मोबाईल, टॅबलेट किंवा कंप्युटर.</p>
         </div>
-        <div class="feature-card">
+        <div class="kd-feature-item">
           <h3>♾️ Lifetime Access</h3>
-          <p>Once purchased, your materials are yours forever. No subscriptions!</p>
+          <p data-en="Once purchased, your materials are yours forever. No subscriptions!" data-mr="एकदा खरेदी केलं, तर तुमचं साहित्य कायमचं तुमचं. कोणतीही subscription नाही!">एकदा खरेदी केलं, तर तुमचं साहित्य कायमचं तुमचं. कोणतीही subscription नाही!</p>
         </div>
       </div>
     </div>
 
-    <!-- FAQ Section -->
-    <div class="section">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq">
-        <h3>Should I buy individual notes or a bundle?</h3>
-        <p>If you're targeting a specific topic, individual notes are perfect. For comprehensive exam preparation, bundles offer better value with multiple materials and support included.</p>
+    <!-- FAQ -->
+    <div class="kd-compare-card">
+      <div class="kd-compare-card-title" data-en="Frequently Asked Questions" data-mr="वारंवार विचारले जाणारे प्रश्न">वारंवार विचारले जाणारे प्रश्न</div>
+      <div class="kd-faq-list">
+        <div class="kd-faq-item open">
+          <div class="kd-faq-q" data-en="Should I buy individual notes or a bundle?" data-mr="Individual notes खरेदी करावेत की bundle?">Individual notes खरेदी करावेत की bundle?</div>
+          <div class="kd-faq-a" data-en="If you're targeting a specific topic, individual notes are perfect. For comprehensive exam preparation, bundles offer better value with multiple materials included." data-mr="तुम्ही एकाच विषयावर लक्ष केंद्रित करत असाल, तर individual notes उत्तम. संपूर्ण परीक्षेची तयारी करायची असेल, तर bundles मध्ये अनेक साहित्य एकत्र मिळतं — चांगली value!">तुम्ही एकाच विषयावर लक्ष केंद्रित करत असाल, तर individual notes उत्तम. संपूर्ण परीक्षेची तयारी करायची असेल, तर bundles मध्ये अनेक साहित्य एकत्र मिळतं — चांगली value!</div>
+        </div>
+        <div class="kd-faq-item">
+          <div class="kd-faq-q" data-en="Can I upgrade from individual notes to a bundle?" data-mr="Individual notes वरून bundle मध्ये upgrade करता येतं का?">Individual notes वरून bundle मध्ये upgrade करता येतं का?</div>
+          <div class="kd-faq-a" data-en="Yes! WhatsApp us and we'll help you upgrade with appropriate credit." data-mr="हो! आम्हाला WhatsApp करा — आम्ही तुम्हाला upgrade करण्यात मदत करू.">हो! आम्हाला WhatsApp करा — आम्ही तुम्हाला upgrade करण्यात मदत करू.</div>
+        </div>
+        <div class="kd-faq-item">
+          <div class="kd-faq-q" data-en="What's the difference between bundles and complete packages?" data-mr="Bundles आणि Complete Packages मध्ये काय फरक आहे?">Bundles आणि Complete Packages मध्ये काय फरक आहे?</div>
+          <div class="kd-faq-a" data-en="Bundles include core materials for exam prep. Complete packages add MCQ sets, previous year questions, and detailed topic-wise analysis." data-mr="Bundles मध्ये परीक्षेच्या तयारीसाठी मुख्य साहित्य असतं. Complete Packages मध्ये MCQ sets, पूर्वीचे प्रश्न आणि सविस्तर topic-wise analysis जोडलेलं असतं.">Bundles मध्ये परीक्षेच्या तयारीसाठी मुख्य साहित्य असतं. Complete Packages मध्ये MCQ sets, पूर्वीचे प्रश्न आणि सविस्तर topic-wise analysis जोडलेलं असतं.</div>
+        </div>
+        <div class="kd-faq-item">
+          <div class="kd-faq-q" data-en="How often are materials updated?" data-mr="साहित्य किती वेळा update होतं?">साहित्य किती वेळा update होतं?</div>
+          <div class="kd-faq-a" data-en="We update materials quarterly to reflect the latest exam patterns and include questions from recent exams." data-mr="आम्ही साहित्य तिमाही अद्ययावत करतो — नवीन परीक्षा पॅटर्न आणि अलीकडील परीक्षांचे प्रश्न समाविष्ट करतो.">आम्ही साहित्य तिमाही अद्ययावत करतो — नवीन परीक्षा पॅटर्न आणि अलीकडील परीक्षांचे प्रश्न समाविष्ट करतो.</div>
+        </div>
+        <div class="kd-faq-item">
+          <div class="kd-faq-q" data-en="Is there a refund policy?" data-mr="Refund policy आहे का?">Refund policy आहे का?</div>
+          <div class="kd-faq-a" data-en="Since all products are digital PDFs, refunds are not available after download. However, if you face any technical issues, WhatsApp us — we'll help!" data-mr="सर्व products digital PDFs असल्यामुळे, download नंतर refund दिला जात नाही. पण काही तांत्रिक समस्या असल्यास, WhatsApp करा — आम्ही मदत करू!">सर्व products digital PDFs असल्यामुळे, download नंतर refund दिला जात नाही. पण काही तांत्रिक समस्या असल्यास, WhatsApp करा — आम्ही मदत करू!</div>
+        </div>
       </div>
-      <div class="faq">
-        <h3>Can I upgrade from individual notes to a bundle?</h3>
-        <p>Yes! If you've already purchased individual notes and want to upgrade, you'll receive appropriate credit toward the bundle purchase.</p>
-      </div>
-      <div class="faq">
-        <h3>What's the difference between bundles and complete packages?</h3>
-        <p>Bundles include core materials for exam prep. Complete packages add MCQ sets, previous year questions, email support, and detailed topic-wise analysis.</p>
-      </div>
-      <div class="faq">
-        <h3>How often are materials updated?</h3>
-        <p>We update materials quarterly to reflect the latest exam patterns and include questions from recent exams.</p>
-      </div>
-      <div class="faq">
-        <h3>Is there a money-back guarantee?</h3>
-        <p>Yes! 15-day money-back guarantee if you're not satisfied with the materials, no questions asked.</p>
-      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center; margin-bottom:var(--spacing-2xl)">
+      <a href="https://www.knikviradigital.in/products.html" class="kd-btn-primary" style="display:inline-flex;font-size:16px;padding:16px 36px" data-en="🛒 Browse All Study Kits →" data-mr="🛒 सर्व Study Kits पाहा →">🛒 सर्व Study Kits पाहा →</a>
     </div>
   </div>
 
-  <div class="footer">
-    <p>&copy; 2024 Knikvira Digital. All rights reserved. | <a href="privacy-policy.html" style="color: #fff; text-decoration: none;">Privacy</a> | <a href="terms.html" style="color: #fff; text-decoration: none;">Terms</a></p>
-  </div>
+  <footer class="kd-footer">
+    <div class="kd-footer-inner">
+      <div class="kd-footer-bottom" style="border:none;padding-top:0">
+        <div>© 2026 Knikvira Digital, Pune · Krishna Jogdand · 📲 8421532744</div>
+        <div class="kd-footer-bottom-links">
+          <a href="https://www.knikviradigital.in/">Home</a>
+          <a href="https://www.knikviradigital.in/products.html">Products</a>
+          <a href="https://www.knikviradigital.in/privacy-policy.html">Privacy</a>
+          <a href="https://www.knikviradigital.in/terms.html">Terms</a>
+          <a href="https://www.knikviradigital.in/refund-policy.html">Refund</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/lang.js"></script>
+  <script src="/js/page.js"></script>
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.kd-faq-q').forEach(function(q) {
+      q.addEventListener('click', function() {
+        var item = q.closest('.kd-faq-item');
+        var wasOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.kd-faq-item').forEach(function(i) { i.classList.remove('open'); });
+        // Toggle clicked
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+  </script>
 </body>
 </html>
