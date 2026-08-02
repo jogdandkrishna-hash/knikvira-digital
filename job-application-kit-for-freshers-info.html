@@ -359,7 +359,7 @@
         </ul>
       </div>
       <div class="kd-product-cta">
-                  <a href="https://wa.me/918421532744?text=Hi%20Krishna%2C%20mala%20job%20application%20kit%20for%20freshers%20havi%20aahe" class="kd-buy-btn">💳 <span data-en="Buy — ₹49" data-mr="खरेदी करा — ₹49">खरेदी करा — ₹49</span></a>
+                  <button class="kd-buy-btn" onclick="payNow('Job Application Kit for Freshers', 4900, 'job-application-kit-for-freshers')">💳 <span data-en="Buy — ₹49" data-mr="खरेदी करा — ₹49">खरेदी करा — ₹49</span></button>
         <a href="https://www.knikviradigital.in/samples/job-application-kit-for-freshers-sample.pdf" target="_blank" rel="noopener" class="kd-sample-btn" data-en="👀 View Free Sample PDF" data-mr="👀 आधी Free Sample PDF पहा">👀 आधी Free Sample PDF पहा</a>
         <a href="https://wa.me/918421532744?text=Hi%20Krishna%2C%20mala%20job%20application%20kit%20for%20freshers%20cha%20SAMPLE%20%2F%20preview%20pahije%2C%20purchase%20karnyaadhi." target="_blank" class="kd-wa-btn" data-en="📲 Ask on WhatsApp Before Purchase" data-mr="📲 खरेदीपूर्वी Sample / प्रश्न विचारा (WhatsApp)">📲 खरेदीपूर्वी Sample / प्रश्न विचारा (WhatsApp)</a>
         <div class="kd-product-trust">
@@ -414,5 +414,28 @@
   <script src="/js/lang.js"></script>
   <script src="/js/page.js"></script>
 
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    function payNow(productName, amount, downloadSlug) {
+      var options = {
+        key: "rzp_live_T1otkxNX00Tv3o",
+        amount: amount,
+        currency: "INR",
+        name: "Knikvira Digital",
+        description: productName,
+        image: "https://www.knikviradigital.in/og-image.png",
+        theme: { color: "#4f46e5" },
+        handler: function(response) {
+          window.location.href = "/download-smart.html?slug=" + downloadSlug;
+        },
+        modal: {
+          ondismiss: function() {}
+        }
+      };
+      var rzp = new Razorpay(options);
+      rzp.open();
+    }
+  </script>
 </body>
 </html>

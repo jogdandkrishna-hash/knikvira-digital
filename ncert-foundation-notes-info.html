@@ -423,7 +423,7 @@
         name: "Knikvira Digital", description: productName,
         image: "https://via.placeholder.com/150x50/4f46e5/ffffff?text=Knikvira",
         theme: { color: "#4f46e5" },
-        handler: function(r) { window.location.href = "/" + downloadSlug + ".html"; },
+        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug; },
         modal: { ondismiss: function() {} }
       };
       new Razorpay(options).open();
