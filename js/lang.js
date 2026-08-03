@@ -1,10 +1,12 @@
 /* ============================================
    KNIKVIRA DIGITAL — Language Switcher
    English / Marathi — localStorage persistence
+   Also syncs with interactive product pages (knv_lang)
    ============================================ */
 
 (function() {
   const STORAGE_KEY = 'kd-lang';
+  const PRODUCT_LANG_KEY = 'knv_lang'; // used by 3-language product pages
 
   function getLang() {
     return localStorage.getItem(STORAGE_KEY) || 'mr';
@@ -12,6 +14,12 @@
 
   function setLang(lang) {
     localStorage.setItem(STORAGE_KEY, lang);
+    // Sync with interactive product pages' language system
+    // Product pages use: 'mr' (Marathi), 'hi' (Hindi), 'en' (English)
+    // Main site uses: 'mr' (Marathi), 'en' (English)
+    // When main site switches to EN, product pages should show English
+    // When main site switches to MR, product pages should show Marathi
+    localStorage.setItem(PRODUCT_LANG_KEY, lang);
     applyLang(lang);
     updateToggle(lang);
   }
@@ -63,6 +71,20 @@
 
   function init() {
     var lang = getLang();
+    
+    // On init, also sync knv_lang from kd-lang if kd-lang is set
+    // This ensures product pages pick up the right language
+    if (localStorage.getItem(STORAGE_KEY)) {
+      localStorage.setItem(PRODUCT_LANG_KEY, lang);
+    } else {
+      // If no kd-lang set, check knv_lang from product pages
+      var productLang = localStorage.getItem(PRODUCT_LANG_KEY);
+      if (productLang && (productLang === 'en' || productLang === 'mr')) {
+        lang = productLang;
+        localStorage.setItem(STORAGE_KEY, lang);
+      }
+    }
+    
     applyLang(lang);
     updateToggle(lang);
 
