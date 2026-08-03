@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="utf-8">
+<title>Language Test</title>
+<style>
+body{font-family:system-ui;padding:40px;background:#1e1b4b;color:white}
+h1{margin-bottom:20px}
+.test{margin:10px 0;padding:10px;background:rgba(255,255,255,0.1);border-radius:8px}
+.btns{display:flex;gap:10px;margin:20px 0}
+.btn{padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-size:16px}
+.btn.mr{background:#4f46e5;color:white}
+.btn.en{background:#10b981;color:white}
+.btn.active{box-shadow:0 0 20px rgba(255,255,255,0.5)}
+#log{margin-top:20px;padding:15px;background:rgba(0,0,0,0.3);border-radius:8px;font-family:monospace;font-size:13px;white-space:pre-wrap;max-height:300px;overflow:auto}
+</style>
+</head>
+<body>
+<h1>🌐 Language Switcher Test</h1>
+
+<div class="btns">
+  <button class="btn mr" id="btnMr" onclick="switchLang('mr')">🇮🇳 मराठी</button>
+  <button class="btn en" id="btnEn" onclick="switchLang('en')">🇬🇧 English</button>
+</div>
+
+<div class="test" data-en="All Kits" data-mr="सर्व Kits">सर्व Kits</div>
+<div class="test" data-en="Free Samples" data-mr="मोफत Samples">मोफत Samples</div>
+<div class="test" data-en="About Us" data-mr="आमच्याबद्दल">आमच्याबद्दल</div>
+<div class="test" data-en="Best Notes & Study Kits" data-mr="सर्वोत्तम Notes & Study Kits">सर्वोत्तम Notes & Study Kits</div>
+<div class="test" data-en="Instant Download" data-mr="लगेच Download">लगेच Download</div>
+<div class="test" data-en="MPSC • UPSC • Police Bharti" data-mr="MPSC • UPSC • पोलीस भरती">MPSC • UPSC • पोलीस भरती</div>
+<div class="test" data-en="Buy Now — ₹99" data-mr="खरेदी करा — ₹99">खरेदी करा — ₹99</div>
+
+<div id="log"></div>
+
+<script src="/js/lang.js"></script>
+<script>
+var logEl = document.getElementById('log');
+function log(msg) {
+  logEl.textContent += msg + '\n';
+  console.log(msg);
+}
+
+log('=== Language Switcher Test ===');
+log('kd-lang: ' + localStorage.getItem('kd-lang'));
+log('knv_lang: ' + localStorage.getItem('knv_lang'));
+
+function switchLang(lang) {
+  log('\n--- Switching to: ' + lang + ' ---');
+  
+  // Use lang.js's exposed function
+  if (window.kdSetLang) {
+    log('Calling kdSetLang("' + lang + '")');
+    window.kdSetLang(lang);
+  } else {
+    log('kdSetLang NOT FOUND! Setting localStorage manually');
+    localStorage.setItem('kd-lang', lang);
+    localStorage.setItem('knv_lang', lang);
+    
+    // Manually apply
+    document.querySelectorAll('[data-en]').forEach(function(el) {
+      var text = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-mr');
+      if (text) el.innerHTML = text;
+    });
+  }
+  
+  log('kd-lang after: ' + localStorage.getItem('kd-lang'));
+  log('knv_lang after: ' + localStorage.getItem('knv_lang'));
+  
+  // Verify DOM
+  var tests = document.querySelectorAll('.test');
+  tests.forEach(function(el) {
+    log('DOM: "' + el.textContent.trim().substring(0, 40) + '"');
+  });
+  
+  // Update button active state
+  document.getElementById('btnMr').classList.toggle('active', lang === 'mr');
+  document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+}
+
+log('\nCurrent DOM state:');
+var tests = document.querySelectorAll('.test');
+tests.forEach(function(el) {
+  log('DOM: "' + el.textContent.trim().substring(0, 40) + '" (data-en="' + (el.getAttribute('data-en')||'').substring(0,30) + '")');
+});
+
+log('\nClick मराठी or English button to test!');
+</script>
+</body>
+</html>
