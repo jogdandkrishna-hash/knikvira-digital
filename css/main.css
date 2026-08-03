@@ -162,10 +162,15 @@ ul, ol { list-style: none; }
 }
 .kd-nav-brand-icon {
   width: 36px; height: 36px;
-  background: var(--gradient-primary);
   border-radius: 10px;
+  overflow: hidden;
   display: grid; place-items: center;
-  font-weight: 900; font-size: 15px; color: white;
+  flex-shrink: 0;
+}
+.kd-nav-brand-icon img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
 }
 .kd-nav-brand-text span { color: var(--accent-light); }
 .kd-nav-links {
