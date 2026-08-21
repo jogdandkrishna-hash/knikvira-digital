@@ -19,11 +19,26 @@
     { "source": "/job-application-kit-for-freshers-info", "destination": "/job-application-kit-for-freshers-info.html" },
     { "source": "/student-study-planner-info", "destination": "/student-study-planner-info.html" }
   ],
+  "functions": {
+    "api/get-content.js": {
+      "includeFiles": "api/_content/**",
+      "maxDuration": 30
+    },
+    "api/verify-payment.js": {
+      "maxDuration": 30
+    }
+  },
   "headers": [
     {
       "source": "/products.html",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
       ]
     }
   ]
