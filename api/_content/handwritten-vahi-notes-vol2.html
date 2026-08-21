@@ -51,13 +51,13 @@
     <div class="price-tag">Rs.99 • Payment Confirmed</div>
     <div class="success">🎉 खूप आभारी आहोत!</div>
     <p class="desc">तुमची payment यशस्वी झाली! भाग २ आता <strong>3 भाषांमध्ये</strong> उपलब्ध — तुमची भाषा निवडा आणि PDF download करा (प्रत्येकी 16 पाने, A4 Print-ready). तिन्ही भाषा download करता येतात! 🎉</p>
-    <a class="download-btn" href="/downloads/handwritten-vahi-notes-vol2.pdf" target="_blank">
+    <a class="download-btn" href="#" data-file="marathi" target="_blank">
       ⬇️ मराठी PDF Download करा (Marathi)
     </a>
-    <a class="download-btn" style="background:linear-gradient(135deg,#f59e0b,#d97706);" href="/downloads/handwritten-vahi-notes-vol2-hi.pdf" target="_blank">
+    <a class="download-btn" style="background:linear-gradient(135deg,#f59e0b,#d97706);" href="#" data-file="hindi" target="_blank">
       ⬇️ हिंदी PDF Download करा (Hindi)
     </a>
-    <a class="download-btn" style="background:linear-gradient(135deg,#10b981,#059669);" href="/downloads/handwritten-vahi-notes-vol2-en.pdf" target="_blank">
+    <a class="download-btn" style="background:linear-gradient(135deg,#10b981,#059669);" href="#" data-file="english" target="_blank">
       ⬇️ English PDF Download करा
     </a>
     <a class="whatsapp-btn" style="background:linear-gradient(135deg,#f59e0b,#d97706);" href="https://wa.me/918421532744?text=Hi!%20Handwritten%20Vahi%20Notes%20Bhag%202%20baddal%20maze%20feedback%3A%20(kashi%20vatli%20PDF%3F%201%20oli%20liha)" target="_blank">
@@ -70,5 +70,17 @@
   </div>
   <script src="/js/lang.js?v=2"></script>
   <script src="/js/page.js?v=2"></script>
+  <script>
+    // Route the PDF links through the verified content endpoint, carrying
+    // the payment id forward from this page's own URL.
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var pid = params.get('pid') || '';
+      var base = '/api/get-content?slug=handwritten-vahi-notes-vol2&pid=' + encodeURIComponent(pid);
+      document.querySelectorAll('a[data-file]').forEach(function (a) {
+        a.href = base + '&file=' + a.getAttribute('data-file');
+      });
+    })();
+  </script>
 </body>
 </html>

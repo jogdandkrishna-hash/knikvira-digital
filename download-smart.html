@@ -141,7 +141,7 @@ function init(){
     .then(function(resp){ return resp.json(); })
     .then(function(data){
       if (data && data.ok === true) {
-        var downloadUrl = info.downloadUrl;
+        var downloadUrl = '/api/get-content?slug=' + encodeURIComponent(slug) + '&pid=' + encodeURIComponent(pid);
         area.innerHTML = '<div class="tip-box"><p>💡 <strong>How to save as PDF:</strong> Notes page उघडल्यावर → वरच्या बाजूला भाषा निवडा (मराठी/हिंदी/English) → <strong>Ctrl+P</strong> किंवा <strong>Print</strong> बटण दाबा → <strong>Save as PDF</strong> निवडा → Download!</p></div>'
           + '<a class="download-btn" href="' + downloadUrl + '" target="_blank">⬇️ तुमची Notes Download करा / Download Your Notes</a>'
           + '<a class="whatsapp-btn" href="' + waLink(msg) + '" target="_blank">📲 Problem असेल तर WhatsApp करा</a>';
