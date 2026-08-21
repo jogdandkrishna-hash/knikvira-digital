@@ -350,12 +350,11 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>इयत्ता 6-12 संकल्पनांचा सारांश — विज्ञान, इतिहास, भूगोल, राजव्यवस्था, अर्थ</li>
-          <li>MPSC/UPSC च्या पायाभूत तयारीसाठी आदर्श</li>
-          <li>75 सराव प्रश्न + उत्तरतालिका</li>
-          <li>24 पाने — 3 भाषांत (मराठी + हिंदी + English)</li>
-          <li>⚡ Instant Digital Download</li>
-
+          <li data-en="Summary of Class 6-12 concepts — Science, History, Geography, Polity, Economy" data-mr="इयत्ता 6-12 संकल्पनांचा सारांश — विज्ञान, इतिहास, भूगोल, राजव्यवस्था, अर्थ">इयत्ता 6-12 संकल्पनांचा सारांश — विज्ञान, इतिहास, भूगोल, राजव्यवस्था, अर्थ</li>
+          <li data-en="Ideal for MPSC/UPSC foundation preparation" data-mr="MPSC/UPSC च्या पायाभूत तयारीसाठी आदर्श">MPSC/UPSC च्या पायाभूत तयारीसाठी आदर्श</li>
+          <li data-en="75 practice questions + answer key" data-mr="75 सराव प्रश्न + उत्तरतालिका">75 सराव प्रश्न + उत्तरतालिका</li>
+          <li data-en="24 pages — in 3 languages (Marathi + Hindi + English)" data-mr="24 पाने — 3 भाषांत (मराठी + हिंदी + English)">24 पाने — 3 भाषांत (मराठी + हिंदी + English)</li>
+          <li data-en="⚡ Instant Digital Download" data-mr="⚡ Instant Digital Download">⚡ Instant Digital Download</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -423,7 +422,7 @@
         name: "Knikvira Digital", description: productName,
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
-        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug; },
+        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (r && r.razorpay_payment_id ? r.razorpay_payment_id : ""); },
         modal: { ondismiss: function() {} }
       };
       new Razorpay(options).open();

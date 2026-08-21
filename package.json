@@ -1,0 +1,9 @@
+{
+  "name": "knikvira-digital",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Knikvira Digital — MPSC / UPSC / Police Bharti / Talathi study material (static site + Vercel serverless functions)",
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -350,12 +350,11 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>तलाठी भरती TCS pattern — संपूर्ण मार्गदर्शक</li>
-          <li>गणित, बुद्धिमत्ता, मराठी, English, GK — सर्व विषय covered</li>
-          <li>परीक्षा पॅटर्न विश्लेषण + तयारी टिप्स</li>
-          <li>3 भाषा — मराठी + हिंदी + English</li>
-          <li>⚡ Instant Digital Download</li>
-
+          <li data-en="Talathi Bharti TCS pattern — complete guide" data-mr="तलाठी भरती TCS pattern — संपूर्ण मार्गदर्शक">तलाठी भरती TCS pattern — संपूर्ण मार्गदर्शक</li>
+          <li data-en="Maths, reasoning, Marathi, English, GK — all subjects covered" data-mr="गणित, बुद्धिमत्ता, मराठी, English, GK — सर्व विषय covered">गणित, बुद्धिमत्ता, मराठी, English, GK — सर्व विषय covered</li>
+          <li data-en="Exam pattern analysis + preparation tips" data-mr="परीक्षा पॅटर्न विश्लेषण + तयारी टिप्स">परीक्षा पॅटर्न विश्लेषण + तयारी टिप्स</li>
+          <li data-en="3 languages — Marathi + Hindi + English" data-mr="3 भाषा — मराठी + हिंदी + English">3 भाषा — मराठी + हिंदी + English</li>
+          <li data-en="⚡ Instant Digital Download" data-mr="⚡ Instant Digital Download">⚡ Instant Digital Download</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -427,7 +426,7 @@
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
         handler: function(response) {
-          window.location.href = "/download-smart.html?slug=" + downloadSlug;
+          window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (response && response.razorpay_payment_id ? response.razorpay_payment_id : "");
         },
         modal: {
           ondismiss: function() {}

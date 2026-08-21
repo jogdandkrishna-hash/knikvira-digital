@@ -350,11 +350,10 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>महाराष्ट्र GK चा जलद revision — exam-focused सारण्या</li>
-          <li>जिल्हा GK, नद्या, धरणे, पर्यटन, इतिहास</li>
-          <li>3 भाषा — मराठी + हिंदी + English</li>
-          <li>⚡ Instant Digital Download</li>
-
+          <li data-en="Quick revision of Maharashtra GK — exam-focused tables" data-mr="महाराष्ट्र GK चा जलद revision — exam-focused सारण्या">महाराष्ट्र GK चा जलद revision — exam-focused सारण्या</li>
+          <li data-en="District GK, rivers, dams, tourism, history" data-mr="जिल्हा GK, नद्या, धरणे, पर्यटन, इतिहास">जिल्हा GK, नद्या, धरणे, पर्यटन, इतिहास</li>
+          <li data-en="3 languages — Marathi + Hindi + English" data-mr="3 भाषा — मराठी + हिंदी + English">3 भाषा — मराठी + हिंदी + English</li>
+          <li data-en="⚡ Instant Digital Download" data-mr="⚡ Instant Digital Download">⚡ Instant Digital Download</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -426,7 +425,7 @@
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
         handler: function(response) {
-          window.location.href = "/download-smart.html?slug=" + downloadSlug;
+          window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (response && response.razorpay_payment_id ? response.razorpay_payment_id : "");
         },
         modal: {
           ondismiss: function() {}

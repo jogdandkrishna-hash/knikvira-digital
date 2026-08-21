@@ -350,12 +350,11 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>Professional Resume templates — easy to customize</li>
-          <li>Cover letter samples — industry-specific</li>
-          <li>Interview tips & common questions</li>
-          <li>Job application checklist</li>
-          <li>⚡ Instant Digital Download</li>
-
+          <li data-en="Professional Resume templates — easy to customize" data-mr="Professional Resume templates — easy to customize">Professional Resume templates — easy to customize</li>
+          <li data-en="Cover letter samples — industry-specific" data-mr="Cover letter samples — industry-specific">Cover letter samples — industry-specific</li>
+          <li data-en="Interview tips &amp; common questions" data-mr="Interview tips &amp; common questions">Interview tips & common questions</li>
+          <li data-en="Job application checklist" data-mr="Job application checklist">Job application checklist</li>
+          <li data-en="⚡ Instant Digital Download" data-mr="⚡ Instant Digital Download">⚡ Instant Digital Download</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -427,7 +426,7 @@
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
         handler: function(response) {
-          window.location.href = "/download-smart.html?slug=" + downloadSlug;
+          window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (response && response.razorpay_payment_id ? response.razorpay_payment_id : "");
         },
         modal: {
           ondismiss: function() {}

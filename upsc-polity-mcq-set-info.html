@@ -350,14 +350,13 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>60 UPSC-पैटर्न अभ्यास MCQ — 4 सेट्स</li>
-          <li>30 Rapid-Fire Fact प्रश्न — जलद आठवणीसाठी</li>
-          <li>प्रत्येक उत्तराबरोबर hint सहित उत्तरतालिका</li>
-          <li>कथन-प्रश्न (Statement) सोडवण्याची पद्धत</li>
-          <li>UPSC परीक्षा-नकाशा + −1/3 नियम + EV analysis</li>
-          <li>7-दिवस MCQ drill plan · 17 Pages · 3 भाषा</li>
-          <li>⚡ Instant Digital Download</li>
-
+          <li data-en="60 UPSC-pattern practice MCQs — 4 sets" data-mr="60 UPSC-पैटर्न अभ्यास MCQ — 4 सेट्स">60 UPSC-पैटर्न अभ्यास MCQ — 4 सेट्स</li>
+          <li data-en="30 Rapid-Fire Fact questions — for quick recall" data-mr="30 Rapid-Fire Fact प्रश्न — जलद आठवणीसाठी">30 Rapid-Fire Fact प्रश्न — जलद आठवणीसाठी</li>
+          <li data-en="Answer key with a hint for every answer" data-mr="प्रत्येक उत्तराबरोबर hint सहित उत्तरतालिका">प्रत्येक उत्तराबरोबर hint सहित उत्तरतालिका</li>
+          <li data-en="Method to solve statement-type questions" data-mr="कथन-प्रश्न (Statement) सोडवण्याची पद्धत">कथन-प्रश्न (Statement) सोडवण्याची पद्धत</li>
+          <li data-en="UPSC exam map + −1/3 rule + EV analysis" data-mr="UPSC परीक्षा-नकाशा + −1/3 नियम + EV analysis">UPSC परीक्षा-नकाशा + −1/3 नियम + EV analysis</li>
+          <li data-en="7-day MCQ drill plan · 17 Pages · 3 languages" data-mr="7-दिवस MCQ drill plan · 17 Pages · 3 भाषा">7-दिवस MCQ drill plan · 17 Pages · 3 भाषा</li>
+          <li data-en="⚡ Instant Digital Download" data-mr="⚡ Instant Digital Download">⚡ Instant Digital Download</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -429,7 +428,7 @@
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
         handler: function(response) {
-          window.location.href = "/download-smart.html?slug=" + downloadSlug;
+          window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (response && response.razorpay_payment_id ? response.razorpay_payment_id : "");
         },
         modal: {
           ondismiss: function() {}

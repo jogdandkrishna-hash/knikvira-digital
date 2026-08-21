@@ -350,12 +350,11 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>सर्व 7 विषयांचे 36 पानांचे Detailed Master Notes (मराठी + हिंदी + English)</li>
-          <li>15 प्रश्नांचा Practice Set + स्पष्टीकरणासह उत्तरतालिका</li>
-          <li>Maharashtra GK + भूगोल/इतिहास सारण्या व Mnemonics</li>
-          <li>पॅटर्न विश्लेषण (अंदाजे) व Elimination Tricks</li>
-          <li>Payment नंतर 100% Instant Digital Download</li>
-
+          <li data-en="36-page Detailed Master Notes for all 7 subjects (Marathi + Hindi + English)" data-mr="सर्व 7 विषयांचे 36 पानांचे Detailed Master Notes (मराठी + हिंदी + English)">सर्व 7 विषयांचे 36 पानांचे Detailed Master Notes (मराठी + हिंदी + English)</li>
+          <li data-en="15-question Practice Set + answer key with explanations" data-mr="15 प्रश्नांचा Practice Set + स्पष्टीकरणासह उत्तरतालिका">15 प्रश्नांचा Practice Set + स्पष्टीकरणासह उत्तरतालिका</li>
+          <li data-en="Maharashtra GK + Geography/History tables &amp; Mnemonics" data-mr="Maharashtra GK + भूगोल/इतिहास सारण्या व Mnemonics">Maharashtra GK + भूगोल/इतिहास सारण्या व Mnemonics</li>
+          <li data-en="Pattern analysis (approx.) &amp; Elimination Tricks" data-mr="पॅटर्न विश्लेषण (अंदाजे) व Elimination Tricks">पॅटर्न विश्लेषण (अंदाजे) व Elimination Tricks</li>
+          <li data-en="100% Instant Digital Download after payment" data-mr="Payment नंतर 100% Instant Digital Download">Payment नंतर 100% Instant Digital Download</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -423,7 +422,7 @@
         name: "Knikvira Digital", description: productName,
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
-        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug; },
+        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (r && r.razorpay_payment_id ? r.razorpay_payment_id : ""); },
         modal: { ondismiss: function() {} }
       };
       new Razorpay(options).open();

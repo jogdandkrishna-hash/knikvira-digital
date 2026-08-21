@@ -350,14 +350,13 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>30 दिवसांचा structured practice plan — रोजच्या exercises</li>
-          <li>Basic to intermediate English speaking — step-by-step</li>
-          <li>Daily vocabulary + usage examples</li>
-          <li>Conversation practice — real-life situations</li>
-          <li>Grammar fundamentals — tenses, articles, prepositions</li>
-          <li>Self-assessment checkpoints</li>
-          <li>⚡ Instant Digital Download</li>
-
+          <li data-en="30-day structured practice plan — daily exercises" data-mr="30 दिवसांचा structured practice plan — रोजच्या exercises">30 दिवसांचा structured practice plan — रोजच्या exercises</li>
+          <li data-en="Basic to intermediate English speaking — step-by-step" data-mr="Basic to intermediate English speaking — step-by-step">Basic to intermediate English speaking — step-by-step</li>
+          <li data-en="Daily vocabulary + usage examples" data-mr="Daily vocabulary + usage examples">Daily vocabulary + usage examples</li>
+          <li data-en="Conversation practice — real-life situations" data-mr="Conversation practice — real-life situations">Conversation practice — real-life situations</li>
+          <li data-en="Grammar fundamentals — tenses, articles, prepositions" data-mr="Grammar fundamentals — tenses, articles, prepositions">Grammar fundamentals — tenses, articles, prepositions</li>
+          <li data-en="Self-assessment checkpoints" data-mr="Self-assessment checkpoints">Self-assessment checkpoints</li>
+          <li data-en="⚡ Instant Digital Download" data-mr="⚡ Instant Digital Download">⚡ Instant Digital Download</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -429,7 +428,7 @@
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
         handler: function(response) {
-          window.location.href = "/download-smart.html?slug=" + downloadSlug;
+          window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (response && response.razorpay_payment_id ? response.razorpay_payment_id : "");
         },
         modal: {
           ondismiss: function() {}

@@ -350,14 +350,13 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>परीक्षा-मानचित्र: 80 प्रश्न • 200 अंक • 33% पासिंग</li>
-          <li>संख्या-पद्धति, प्रतिशत + नफा-तोटा, अनुपात-आयु + औसत</li>
-          <li>वेळ-गती-अंतर, वेळ-कार्य, ब्याज — सूत्र + TRICKS</li>
-          <li>श्रृंखला, दिशा-रक्त-संबंध, कोडिंग-क्रमवारी</li>
-          <li>DI + निर्णय क्षमता (NO negative!) ⭐</li>
-          <li>15 Practice Qs + उत्तरतालिका + 7-दिवस Plan</li>
-          <li>⚡ Instant Digital Download (17 पाने, 3 भाषा)</li>
-
+          <li data-en="Exam map: 80 questions • 200 marks • 33% passing" data-mr="परीक्षा-मानचित्र: 80 प्रश्न • 200 अंक • 33% पासिंग">परीक्षा-मानचित्र: 80 प्रश्न • 200 अंक • 33% पासिंग</li>
+          <li data-en="Number system, percentage + profit-loss, ratio-age + average" data-mr="संख्या-पद्धति, प्रतिशत + नफा-तोटा, अनुपात-आयु + औसत">संख्या-पद्धति, प्रतिशत + नफा-तोटा, अनुपात-आयु + औसत</li>
+          <li data-en="Time-speed-distance, time-work, interest — formulas + TRICKS" data-mr="वेळ-गती-अंतर, वेळ-कार्य, ब्याज — सूत्र + TRICKS">वेळ-गती-अंतर, वेळ-कार्य, ब्याज — सूत्र + TRICKS</li>
+          <li data-en="Series, direction-blood relation, coding-order" data-mr="श्रृंखला, दिशा-रक्त-संबंध, कोडिंग-क्रमवारी">श्रृंखला, दिशा-रक्त-संबंध, कोडिंग-क्रमवारी</li>
+          <li data-en="DI + decision making (NO negative marking!) ⭐" data-mr="DI + निर्णय क्षमता (NO negative!) ⭐">DI + निर्णय क्षमता (NO negative!) ⭐</li>
+          <li data-en="15 Practice Qs + answer key + 7-day plan" data-mr="15 Practice Qs + उत्तरतालिका + 7-दिवस Plan">15 Practice Qs + उत्तरतालिका + 7-दिवस Plan</li>
+          <li data-en="⚡ Instant Digital Download (17 pages, 3 languages)" data-mr="⚡ Instant Digital Download (17 पाने, 3 भाषा)">⚡ Instant Digital Download (17 पाने, 3 भाषा)</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -429,7 +428,7 @@
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
         handler: function(response) {
-          window.location.href = "/download-smart.html?slug=" + downloadSlug;
+          window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (response && response.razorpay_payment_id ? response.razorpay_payment_id : "");
         },
         modal: {
           ondismiss: function() {}

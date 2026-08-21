@@ -350,12 +350,11 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>500 तपासलेले प्रश्न — अंकगणित, बुद्धिमत्ता, मराठी व्याकरण, सामान्य ज्ञान</li>
-          <li>4 Mock Tests — परीक्षा पॅटर्नवर आधारित</li>
-          <li>स्पष्टीकरणासह उत्तरतालिका</li>
-          <li>36 पाने — 3 भाषांत (मराठी + हिंदी + English)</li>
-          <li>⚡ Instant Digital Download</li>
-
+          <li data-en="500 verified questions — arithmetic, reasoning, Marathi grammar, general knowledge" data-mr="500 तपासलेले प्रश्न — अंकगणित, बुद्धिमत्ता, मराठी व्याकरण, सामान्य ज्ञान">500 तपासलेले प्रश्न — अंकगणित, बुद्धिमत्ता, मराठी व्याकरण, सामान्य ज्ञान</li>
+          <li data-en="4 Mock Tests — based on exam pattern" data-mr="4 Mock Tests — परीक्षा पॅटर्नवर आधारित">4 Mock Tests — परीक्षा पॅटर्नवर आधारित</li>
+          <li data-en="Answer key with explanations" data-mr="स्पष्टीकरणासह उत्तरतालिका">स्पष्टीकरणासह उत्तरतालिका</li>
+          <li data-en="36 pages — in 3 languages (Marathi + Hindi + English)" data-mr="36 पाने — 3 भाषांत (मराठी + हिंदी + English)">36 पाने — 3 भाषांत (मराठी + हिंदी + English)</li>
+          <li data-en="⚡ Instant Digital Download" data-mr="⚡ Instant Digital Download">⚡ Instant Digital Download</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -423,7 +422,7 @@
         name: "Knikvira Digital", description: productName,
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
-        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug; },
+        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (r && r.razorpay_payment_id ? r.razorpay_payment_id : ""); },
         modal: { ondismiss: function() {} }
       };
       new Razorpay(options).open();

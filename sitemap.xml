@@ -50,23 +50,23 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.knikviradigital.in/mpsc-previous-year-questions.html</loc>
+    <loc>https://www.knikviradigital.in/mpsc-previous-year-questions-info.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.knikviradigital.in/mpsc-polity-quick-notes.html</loc>
+    <loc>https://www.knikviradigital.in/mpsc-polity-quick-notes-info.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.knikviradigital.in/upsc-polity-mcq-set.html</loc>
+    <loc>https://www.knikviradigital.in/upsc-polity-mcq-set-info.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.knikviradigital.in/csat-practice-starter.html</loc>
+    <loc>https://www.knikviradigital.in/csat-practice-starter-info.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.knikviradigital.in/upsc-current-affairs-starter.html</loc>
+    <loc>https://www.knikviradigital.in/upsc-current-affairs-starter-info.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
@@ -74,7 +74,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.knikviradigital.in/maharashtra-gk-revision-pack.html</loc>
+    <loc>https://www.knikviradigital.in/maharashtra-gk-revision-pack-info.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
@@ -91,7 +91,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.knikviradigital.in/police-bharti-complete-guide.html</loc>
+    <loc>https://www.knikviradigital.in/police-bharti-complete-guide-info.html</loc>
     <priority>0.7</priority>
   </url>
   <!-- Talathi -->
@@ -100,7 +100,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.knikviradigital.in/talathi-bharti-guide.html</loc>
+    <loc>https://www.knikviradigital.in/talathi-bharti-guide-info.html</loc>
     <priority>0.7</priority>
   </url>
   <!-- Handwritten Notes -->
@@ -114,15 +114,15 @@
   </url>
   <!-- English + Career -->
   <url>
-    <loc>https://www.knikviradigital.in/30-days-english-speaking-practice.html</loc>
+    <loc>https://www.knikviradigital.in/30-days-english-speaking-practice-info.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.knikviradigital.in/job-application-kit-for-freshers.html</loc>
+    <loc>https://www.knikviradigital.in/job-application-kit-for-freshers-info.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.knikviradigital.in/student-study-planner.html</loc>
+    <loc>https://www.knikviradigital.in/student-study-planner-info.html</loc>
     <priority>0.6</priority>
   </url>
   <!-- Blog Posts -->
@@ -141,5 +141,10 @@
   <url>
     <loc>https://www.knikviradigital.in/blog-rapid-revision-tips.html</loc>
     <priority>0.7</priority>
+  </url>
+  <!-- Combo Bundles / Books Stock -->
+  <url>
+    <loc>https://www.knikviradigital.in/knikvira_pro.html</loc>
+    <priority>0.8</priority>
   </url>
 </urlset>

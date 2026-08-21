@@ -350,15 +350,14 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>महत्त्वाचे अनुच्छेद नकाशा (1-395 मधून निवडक)</li>
-          <li>पंचायती राज — ग्रामपंचायत ते जिल्हा परिषद</li>
-          <li>समाज सुधारक — महात्मा फुले, राजर्षी शाहू, डॉ. आंबेडकर</li>
-          <li>मराठी वाक्प्रचार, तत्सम-तद्भव शब्द</li>
-          <li>English Idioms व One Word Substitutions</li>
-          <li>अंकगणित Tricks + विज्ञान Keywords</li>
-          <li>3 भाषा — मराठी + हिंदी + English</li>
-          <li>A4 Print-ready रंगीत PDF</li>
-
+          <li data-en="Important Articles map (selected from 1-395)" data-mr="महत्त्वाचे अनुच्छेद नकाशा (1-395 मधून निवडक)">महत्त्वाचे अनुच्छेद नकाशा (1-395 मधून निवडक)</li>
+          <li data-en="Panchayati Raj — from Gram Panchayat to Zilla Parishad" data-mr="पंचायती राज — ग्रामपंचायत ते जिल्हा परिषद">पंचायती राज — ग्रामपंचायत ते जिल्हा परिषद</li>
+          <li data-en="Social reformers — Mahatma Phule, Rajarshi Shahu, Dr. Ambedkar" data-mr="समाज सुधारक — महात्मा फुले, राजर्षी शाहू, डॉ. आंबेडकर">समाज सुधारक — महात्मा फुले, राजर्षी शाहू, डॉ. आंबेडकर</li>
+          <li data-en="Marathi idioms, Tatsam-Tadbhav words" data-mr="मराठी वाक्प्रचार, तत्सम-तद्भव शब्द">मराठी वाक्प्रचार, तत्सम-तद्भव शब्द</li>
+          <li data-en="English Idioms &amp; One Word Substitutions" data-mr="English Idioms व One Word Substitutions">English Idioms व One Word Substitutions</li>
+          <li data-en="Arithmetic Tricks + Science Keywords" data-mr="अंकगणित Tricks + विज्ञान Keywords">अंकगणित Tricks + विज्ञान Keywords</li>
+          <li data-en="3 languages — Marathi + Hindi + English" data-mr="3 भाषा — मराठी + हिंदी + English">3 भाषा — मराठी + हिंदी + English</li>
+          <li data-en="A4 Print-ready colorful PDF" data-mr="A4 Print-ready रंगीत PDF">A4 Print-ready रंगीत PDF</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -426,7 +425,7 @@
         name: "Knikvira Digital", description: productName,
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
-        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug; },
+        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (r && r.razorpay_payment_id ? r.razorpay_payment_id : ""); },
         modal: { ondismiss: function() {} }
       };
       new Razorpay(options).open();

@@ -350,15 +350,14 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>1 विषय = 1 पान — हस्तलिखित वही-शैली, नीट-क्लीन Devanagari</li>
-          <li>राज्यघटना (मूलभूत हक्क + TOP-10 घटनादुरुस्त्या) व इतिहास टाइमलाइन</li>
-          <li>शिवकाळ गड-किल्ले + महाराष्ट्र भूगोल, नद्या-धरणे, जिल्हा GK</li>
-          <li>मराठी व्याकरण: संधि, समास-अलंकार, म्हणी-वाक्प्रचार TOP-12</li>
-          <li>English Grammar Golden Table + One Word Substitution</li>
-          <li>अंकगणित-बुद्धिमत्ता Tricks + विज्ञान Keywords</li>
-          <li>रिव्हिजन 1-3-7 पद्धत + अभ्यास-ट्रॅकर पान</li>
-          <li>A4 Print-ready रंगीत PDF — Print करा किंवा मोबाईलवर वाचा</li>
-
+          <li data-en="1 topic = 1 page — handwritten notebook style, neat-clean Devanagari" data-mr="1 विषय = 1 पान — हस्तलिखित वही-शैली, नीट-क्लीन Devanagari">1 विषय = 1 पान — हस्तलिखित वही-शैली, नीट-क्लीन Devanagari</li>
+          <li data-en="Constitution (Fundamental Rights + TOP-10 Amendments) &amp; History Timeline" data-mr="राज्यघटना (मूलभूत हक्क + TOP-10 घटनादुरुस्त्या) व इतिहास टाइमलाइन">राज्यघटना (मूलभूत हक्क + TOP-10 घटनादुरुस्त्या) व इतिहास टाइमलाइन</li>
+          <li data-en="Shivaji-era forts + Maharashtra geography, rivers-dams, district GK" data-mr="शिवकाळ गड-किल्ले + महाराष्ट्र भूगोल, नद्या-धरणे, जिल्हा GK">शिवकाळ गड-किल्ले + महाराष्ट्र भूगोल, नद्या-धरणे, जिल्हा GK</li>
+          <li data-en="Marathi grammar: Sandhi, Samas-Alankar, TOP-12 proverbs &amp; idioms" data-mr="मराठी व्याकरण: संधि, समास-अलंकार, म्हणी-वाक्प्रचार TOP-12">मराठी व्याकरण: संधि, समास-अलंकार, म्हणी-वाक्प्रचार TOP-12</li>
+          <li data-en="English Grammar Golden Table + One Word Substitution" data-mr="English Grammar Golden Table + One Word Substitution">English Grammar Golden Table + One Word Substitution</li>
+          <li data-en="Arithmetic-reasoning Tricks + Science Keywords" data-mr="अंकगणित-बुद्धिमत्ता Tricks + विज्ञान Keywords">अंकगणित-बुद्धिमत्ता Tricks + विज्ञान Keywords</li>
+          <li data-en="1-3-7 revision method + study-tracker page" data-mr="रिव्हिजन 1-3-7 पद्धत + अभ्यास-ट्रॅकर पान">रिव्हिजन 1-3-7 पद्धत + अभ्यास-ट्रॅकर पान</li>
+          <li data-en="A4 Print-ready colorful PDF — print or read on mobile" data-mr="A4 Print-ready रंगीत PDF — Print करा किंवा मोबाईलवर वाचा">A4 Print-ready रंगीत PDF — Print करा किंवा मोबाईलवर वाचा</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -426,7 +425,7 @@
         name: "Knikvira Digital", description: productName,
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
-        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug; },
+        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (r && r.razorpay_payment_id ? r.razorpay_payment_id : ""); },
         modal: { ondismiss: function() {} }
       };
       new Razorpay(options).open();

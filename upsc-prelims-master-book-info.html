@@ -350,12 +350,11 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>300 GS-1 + CSAT सराव प्रश्न (2015-2025 Prelims पॅटर्न)</li>
-          <li>तज्ञांद्वारे तपासलेली उत्तरतालिका — 3 भाषांत (मराठी/हिंदी/English)</li>
-          <li>Topic-wise Sorting आणि Elimination Short Tricks</li>
-          <li>12-आठवडीय अभ्यास योजना + GS/CSAT Revision Vaults</li>
-          <li>⚡ Instant Digital Download (30 पाने, Trilingual)</li>
-
+          <li data-en="300 GS-1 + CSAT practice questions (2015-2025 Prelims pattern)" data-mr="300 GS-1 + CSAT सराव प्रश्न (2015-2025 Prelims पॅटर्न)">300 GS-1 + CSAT सराव प्रश्न (2015-2025 Prelims पॅटर्न)</li>
+          <li data-en="Expert-verified answer key — in 3 languages (Marathi/Hindi/English)" data-mr="तज्ञांद्वारे तपासलेली उत्तरतालिका — 3 भाषांत (मराठी/हिंदी/English)">तज्ञांद्वारे तपासलेली उत्तरतालिका — 3 भाषांत (मराठी/हिंदी/English)</li>
+          <li data-en="Topic-wise sorting &amp; Elimination Short Tricks" data-mr="Topic-wise Sorting आणि Elimination Short Tricks">Topic-wise Sorting आणि Elimination Short Tricks</li>
+          <li data-en="12-week study plan + GS/CSAT Revision Vaults" data-mr="12-आठवडीय अभ्यास योजना + GS/CSAT Revision Vaults">12-आठवडीय अभ्यास योजना + GS/CSAT Revision Vaults</li>
+          <li data-en="⚡ Instant Digital Download (30 pages, Trilingual)" data-mr="⚡ Instant Digital Download (30 पाने, Trilingual)">⚡ Instant Digital Download (30 पाने, Trilingual)</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -423,7 +422,7 @@
         name: "Knikvira Digital", description: productName,
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
-        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug; },
+        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (r && r.razorpay_payment_id ? r.razorpay_payment_id : ""); },
         modal: { ondismiss: function() {} }
       };
       new Razorpay(options).open();
