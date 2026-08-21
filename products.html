@@ -398,6 +398,147 @@
     </div>
   </section>
 
+  <!-- BUNDLE OFFERS -->
+  <style>
+    .kd-bundles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--spacing-md);
+    }
+    .kd-bundle-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+      overflow: hidden;
+    }
+    .kd-bundle-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary-light);
+    }
+    .kd-bundle-card.best {
+      border: 2px solid var(--accent);
+      box-shadow: var(--shadow-accent-glow);
+    }
+    .kd-bundle-badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: var(--gradient-accent);
+      color: var(--dark);
+      font-size: var(--font-size-xs);
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 12px;
+    }
+    .kd-bundle-card.best .kd-bundle-badge {
+      background: var(--gradient-primary);
+      color: white;
+    }
+    .kd-bundle-icon { font-size: 34px; margin-bottom: 8px; }
+    .kd-bundle-title { font-size: var(--font-size-lg); font-weight: 800; color: var(--text); margin-bottom: 10px; line-height: 1.3; }
+    .kd-bundle-items { list-style: none; margin: 0 0 16px; padding: 0; }
+    .kd-bundle-items li {
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+      padding: 5px 0 5px 22px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .kd-bundle-items li::before { content: "✓"; position: absolute; left: 0; color: #059669; font-weight: 800; }
+    .kd-bundle-price-row { display: flex; align-items: baseline; gap: 10px; margin-top: auto; margin-bottom: 6px; }
+    .kd-bundle-new-price { font-size: 28px; font-weight: 900; color: var(--primary); }
+    .kd-bundle-old-price { font-size: 16px; color: var(--text-muted); text-decoration: line-through; }
+    .kd-bundle-save { font-size: var(--font-size-xs); font-weight: 800; color: #059669; margin-bottom: 14px; }
+    .kd-bundle-buy {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; min-height: 50px;
+      background: var(--gradient-primary); color: white;
+      border: none; border-radius: var(--radius);
+      font-size: var(--font-size-md); font-weight: 800;
+      cursor: pointer;
+      box-shadow: var(--shadow-glow);
+      transition: all 0.25s ease;
+    }
+    .kd-bundle-buy:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(79,70,229,0.4); }
+  </style>
+  <section class="kd-section" id="bundles">
+    <div class="kd-section-inner">
+      <div class="kd-section-header">
+        <div class="kd-section-label accent" data-en="🎁 Save More" data-mr="🎁 जास्त वाचवा">🎁 जास्त वाचवा</div>
+        <h2 class="kd-section-title" data-en="Combo Bundle Offers" data-mr="Combo Bundle Offers">Combo Bundle Offers</h2>
+        <p class="kd-section-desc" data-en="Buy 3 kits together and save up to 48% — Instant PDF download after payment." data-mr="3 kits एकत्र घ्या आणि 48% पर्यंत वाचवा — Payment नंतर लगेच PDF download.">3 kits एकत्र घ्या आणि 48% पर्यंत वाचवा — Payment नंतर लगेच PDF download.</p>
+      </div>
+
+      <div class="kd-bundles-grid kd-observe">
+        <!-- MPSC Complete Bundle -->
+        <div class="kd-bundle-card best">
+          <span class="kd-bundle-badge">🏆 Best Seller · 40% OFF</span>
+          <div class="kd-bundle-icon">🏛️</div>
+          <div class="kd-bundle-title" data-en="MPSC Complete Bundle" data-mr="MPSC Complete Bundle">MPSC Complete Bundle</div>
+          <ul class="kd-bundle-items">
+            <li>MPSC Polity Quick Notes (₹99)</li>
+            <li>MPSC Previous Year Questions (₹99)</li>
+            <li>Maharashtra GK Revision Pack (₹49)</li>
+          </ul>
+          <div class="kd-bundle-price-row"><span class="kd-bundle-new-price">₹149</span><span class="kd-bundle-old-price">₹247</span></div>
+          <div class="kd-bundle-save" data-en="You save ₹98" data-mr="तुम्ही ₹98 वाचवता">तुम्ही ₹98 वाचवता</div>
+          <button class="kd-bundle-buy" onclick="payNow('MPSC Complete Bundle', 14900, 'bundle-mpsc-complete')">🛒 <span data-en="Buy Bundle — ₹149" data-mr="Bundle खरेदी करा — ₹149">Bundle खरेदी करा — ₹149</span></button>
+        </div>
+
+        <!-- UPSC Prelims Bundle -->
+        <div class="kd-bundle-card">
+          <span class="kd-bundle-badge">📚 UPSC Aspirants · 34% OFF</span>
+          <div class="kd-bundle-icon">✍️</div>
+          <div class="kd-bundle-title" data-en="UPSC Prelims Bundle" data-mr="UPSC Prelims Bundle">UPSC Prelims Bundle</div>
+          <ul class="kd-bundle-items">
+            <li>UPSC Current Affairs Starter (₹49)</li>
+            <li>UPSC Polity MCQ Set (₹99)</li>
+            <li>CSAT Practice Starter (₹49)</li>
+          </ul>
+          <div class="kd-bundle-price-row"><span class="kd-bundle-new-price">₹129</span><span class="kd-bundle-old-price">₹197</span></div>
+          <div class="kd-bundle-save" data-en="You save ₹68" data-mr="तुम्ही ₹68 वाचवता">तुम्ही ₹68 वाचवता</div>
+          <button class="kd-bundle-buy" onclick="payNow('UPSC Prelims Bundle', 12900, 'bundle-upsc-prelims')">🛒 <span data-en="Buy Bundle — ₹129" data-mr="Bundle खरेदी करा — ₹129">Bundle खरेदी करा — ₹129</span></button>
+        </div>
+
+        <!-- Police + Talathi Bundle -->
+        <div class="kd-bundle-card">
+          <span class="kd-bundle-badge">👮 Bharti Special · 48% OFF</span>
+          <div class="kd-bundle-icon">🚔</div>
+          <div class="kd-bundle-title" data-en="Police + Talathi Bharti Bundle" data-mr="Police + Talathi Bharti Bundle">Police + Talathi Bharti Bundle</div>
+          <ul class="kd-bundle-items">
+            <li>Police Bharti Complete Guide (₹149)</li>
+            <li>Talathi Bharti Guide (₹149)</li>
+            <li>Maharashtra GK Revision Pack (₹49)</li>
+          </ul>
+          <div class="kd-bundle-price-row"><span class="kd-bundle-new-price">₹179</span><span class="kd-bundle-old-price">₹347</span></div>
+          <div class="kd-bundle-save" data-en="You save ₹168" data-mr="तुम्ही ₹168 वाचवता">तुम्ही ₹168 वाचवता</div>
+          <button class="kd-bundle-buy" onclick="payNow('Police + Talathi Bharti Bundle', 17900, 'bundle-police-talathi')">🛒 <span data-en="Buy Bundle — ₹179" data-mr="Bundle खरेदी करा — ₹179">Bundle खरेदी करा — ₹179</span></button>
+        </div>
+
+        <!-- Career Ready Bundle -->
+        <div class="kd-bundle-card">
+          <span class="kd-bundle-badge">💼 Career Starter · 33% OFF</span>
+          <div class="kd-bundle-icon">🚀</div>
+          <div class="kd-bundle-title" data-en="Career Ready Bundle" data-mr="Career Ready Bundle">Career Ready Bundle</div>
+          <ul class="kd-bundle-items">
+            <li>Job Application Kit for Freshers (₹49)</li>
+            <li>30 Days English Speaking Practice (₹49)</li>
+            <li>Student Study Planner (₹49)</li>
+          </ul>
+          <div class="kd-bundle-price-row"><span class="kd-bundle-new-price">₹99</span><span class="kd-bundle-old-price">₹147</span></div>
+          <div class="kd-bundle-save" data-en="You save ₹48" data-mr="तुम्ही ₹48 वाचवता">तुम्ही ₹48 वाचवता</div>
+          <button class="kd-bundle-buy" onclick="payNow('Career Ready Bundle', 9900, 'bundle-career-ready')">🛒 <span data-en="Buy Bundle — ₹99" data-mr="Bundle खरेदी करा — ₹99">Bundle खरेदी करा — ₹99</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer class="kd-footer">
     <div class="kd-footer-inner">
@@ -417,7 +558,21 @@
 
   <script src="/js/lang.js?v=2"></script>
   <script src="/js/page.js?v=2"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script>
+    function payNow(productName, amount, downloadSlug) {
+      var options = {
+        key: "rzp_live_TKphKiYGjotBE7",
+        amount: amount, currency: "INR",
+        name: "Knikvira Digital", description: productName,
+        image: "https://www.knikviradigital.in/knikvira-logo.png",
+        theme: { color: "#4f46e5" },
+        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (r && r.razorpay_payment_id ? r.razorpay_payment_id : ""); },
+        modal: { ondismiss: function() {} }
+      };
+      new Razorpay(options).open();
+    }
+
     function filterCategory(category) {
       document.querySelectorAll('.kd-tab').forEach(tab => {
         tab.classList.remove('active');

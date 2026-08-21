@@ -350,12 +350,11 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>महाराष्ट्र पोलीस भरती — लेखी + शारीरिक संपूर्ण मार्गदर्शक</li>
-          <li>अंकगणित, बुद्धिमत्ता, मराठी व्याकरण, सामान्य ज्ञान</li>
-          <li>Physical Test माहिती व तयारी टिप्स</li>
-          <li>3 भाषा — मराठी + हिंदी + English</li>
-          <li>⚡ Instant Digital Download</li>
-
+          <li data-en="Maharashtra Police Bharti — complete written + physical guide" data-mr="महाराष्ट्र पोलीस भरती — लेखी + शारीरिक संपूर्ण मार्गदर्शक">महाराष्ट्र पोलीस भरती — लेखी + शारीरिक संपूर्ण मार्गदर्शक</li>
+          <li data-en="Arithmetic, reasoning, Marathi grammar, general knowledge" data-mr="अंकगणित, बुद्धिमत्ता, मराठी व्याकरण, सामान्य ज्ञान">अंकगणित, बुद्धिमत्ता, मराठी व्याकरण, सामान्य ज्ञान</li>
+          <li data-en="Physical Test details &amp; preparation tips" data-mr="Physical Test माहिती व तयारी टिप्स">Physical Test माहिती व तयारी टिप्स</li>
+          <li data-en="3 languages — Marathi + Hindi + English" data-mr="3 भाषा — मराठी + हिंदी + English">3 भाषा — मराठी + हिंदी + English</li>
+          <li data-en="⚡ Instant Digital Download" data-mr="⚡ Instant Digital Download">⚡ Instant Digital Download</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -427,7 +426,7 @@
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
         handler: function(response) {
-          window.location.href = "/download-smart.html?slug=" + downloadSlug;
+          window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (response && response.razorpay_payment_id ? response.razorpay_payment_id : "");
         },
         modal: {
           ondismiss: function() {}

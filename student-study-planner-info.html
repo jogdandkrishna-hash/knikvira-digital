@@ -350,12 +350,11 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>Daily schedule template — organized study plan</li>
-          <li>Weekly tracker — progress monitoring</li>
-          <li>Goal setting worksheets</li>
-          <li>Revision tracker — 1-3-7 method</li>
-          <li>⚡ Instant Digital Download</li>
-
+          <li data-en="Daily schedule template — organized study plan" data-mr="Daily schedule template — organized study plan">Daily schedule template — organized study plan</li>
+          <li data-en="Weekly tracker — progress monitoring" data-mr="Weekly tracker — progress monitoring">Weekly tracker — progress monitoring</li>
+          <li data-en="Goal setting worksheets" data-mr="Goal setting worksheets">Goal setting worksheets</li>
+          <li data-en="Revision tracker — 1-3-7 method" data-mr="Revision tracker — 1-3-7 method">Revision tracker — 1-3-7 method</li>
+          <li data-en="⚡ Instant Digital Download" data-mr="⚡ Instant Digital Download">⚡ Instant Digital Download</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -427,7 +426,7 @@
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
         handler: function(response) {
-          window.location.href = "/download-smart.html?slug=" + downloadSlug;
+          window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (response && response.razorpay_payment_id ? response.razorpay_payment_id : "");
         },
         modal: {
           ondismiss: function() {}

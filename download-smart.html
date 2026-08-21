@@ -65,19 +65,19 @@ var PRODUCTS = {
   /* ---- MPSC ---- */
   'mpsc-rajyaseva-study-kit':     {title:'MPSC राज्यसेवा Study Kit',emoji:'🏛️',price:'Rs.199',downloadUrl:'/mpsc-rajyaseva-study-kit.html'},
   'mpsc-group-c-vyakaran':        {title:'MPSC Group C Vyakaran',emoji:'📘',price:'Rs.99',downloadUrl:'/mpsc-group-c-vyakaran.html'},
-  'mpsc-polity-quick-notes':      {title:'MPSC Polity Quick Notes',emoji:'🏛️',price:'Rs.49',downloadUrl:'/mpsc-polity-quick-notes.html'},
+  'mpsc-polity-quick-notes':      {title:'MPSC Polity Quick Notes',emoji:'🏛️',price:'Rs.99',downloadUrl:'/mpsc-polity-quick-notes.html'},
   'mpsc-previous-year-questions':  {title:'MPSC Previous Year Questions',emoji:'✍️',price:'Rs.99',downloadUrl:'/mpsc-previous-year-questions.html'},
   /* ---- UPSC ---- */
   'upsc-prelims-master-book':     {title:'UPSC Prelims PYQ Master Book',emoji:'✍️',price:'Rs.149',downloadUrl:'/upsc-prelims-master-book.html'},
   'upsc-polity-mcq-set':          {title:'UPSC Polity MCQ Set',emoji:'🎯',price:'Rs.99',downloadUrl:'/upsc-polity-mcq-set.html'},
   'upsc-current-affairs-starter': {title:'UPSC Current Affairs Starter',emoji:'📰',price:'Rs.49',downloadUrl:'/upsc-current-affairs-starter.html'},
   /* ---- Police & Talathi ---- */
-  'police-bharti-complete-guide': {title:'Police Bharti Complete Guide',emoji:'🏃',price:'Rs.99',downloadUrl:'/police-bharti-complete-guide.html'},
+  'police-bharti-complete-guide': {title:'Police Bharti Complete Guide',emoji:'🏃',price:'Rs.149',downloadUrl:'/police-bharti-complete-guide.html'},
   'police-bharti-question-bank':  {title:'पोलीस भरती Question Bank',emoji:'🏃',price:'Rs.149',downloadUrl:'/police-bharti-question-bank.html'},
-  'talathi-bharti-guide':         {title:'Talathi Bharti Guide',emoji:'📋',price:'Rs.99',downloadUrl:'/talathi-bharti-guide.html'},
+  'talathi-bharti-guide':         {title:'Talathi Bharti Guide',emoji:'📋',price:'Rs.149',downloadUrl:'/talathi-bharti-guide.html'},
   'talathi-vocabulary-master':    {title:'तलाठी Vocabulary Master',emoji:'📖',price:'Rs.99',downloadUrl:'/talathi-vocabulary-master.html'},
   /* ---- GK & CSAT ---- */
-  'maharashtra-gk-revision-pack': {title:'Maharashtra GK Revision Pack',emoji:'🚩',price:'Rs.99',downloadUrl:'/maharashtra-gk-revision-pack.html'},
+  'maharashtra-gk-revision-pack': {title:'Maharashtra GK Revision Pack',emoji:'🚩',price:'Rs.49',downloadUrl:'/maharashtra-gk-revision-pack.html'},
   'maharashtra-gk-atlas-ebook':   {title:'महाराष्ट्र भूगोल व जिल्हावार अटलास',emoji:'🗺️',price:'Rs.99',downloadUrl:'/atlas-tri.html'},
   'csat-practice-starter':        {title:'CSAT Practice Starter',emoji:'🧮',price:'Rs.49',downloadUrl:'/csat-practice-starter.html'},
   'ncert-foundation-notes':       {title:'NCERT Foundation Notes',emoji:'📑',price:'Rs.149',downloadUrl:'/ncert-foundation-notes.html'},
@@ -92,10 +92,10 @@ var PRODUCTS = {
   'bundle-police-ultimate':       {title:'पोलीस भरती Ultimate Combo',emoji:'🎁',price:'Rs.249',downloadUrl:'/bundle-police-talathi.html'},
   'bundle-talathi-winner':        {title:'तलाठी भरती Winner Combo',emoji:'🎁',price:'Rs.199',downloadUrl:'/bundle-police-talathi.html'},
   'bundle-mpsc-upsc-super':       {title:'MPSC + UPSC Super Combo',emoji:'🎁',price:'Rs.249',downloadUrl:'/bundle-mpsc-complete.html'},
-  'bundle-upsc-prelims':          {title:'UPSC Prelims Bundle',emoji:'🎁',price:'Rs.299',downloadUrl:'/bundle-upsc-prelims.html'},
-  'bundle-career-ready':          {title:'Career Ready Bundle',emoji:'🎁',price:'Rs.149',downloadUrl:'/bundle-career-ready.html'},
-  'bundle-police-talathi':        {title:'Police + Talathi Bundle',emoji:'🎁',price:'Rs.199',downloadUrl:'/bundle-police-talathi.html'},
-  'bundle-mpsc-complete':         {title:'MPSC Complete Bundle',emoji:'🎁',price:'Rs.349',downloadUrl:'/bundle-mpsc-complete.html'}
+  'bundle-upsc-prelims':          {title:'UPSC Prelims Bundle',emoji:'🎁',price:'Rs.129',downloadUrl:'/bundle-upsc-prelims.html'},
+  'bundle-career-ready':          {title:'Career Ready Bundle',emoji:'🎁',price:'Rs.99',downloadUrl:'/bundle-career-ready.html'},
+  'bundle-police-talathi':        {title:'Police + Talathi Bundle',emoji:'🎁',price:'Rs.179',downloadUrl:'/bundle-police-talathi.html'},
+  'bundle-mpsc-complete':         {title:'MPSC Complete Bundle',emoji:'🎁',price:'Rs.149',downloadUrl:'/bundle-mpsc-complete.html'}
 };
 
 var WA = '918421532744';
@@ -110,9 +110,10 @@ function waLink(msg){
 }
 
 function init(){
-  /* detect slug from URL param or filename */
+  /* detect slug + payment id from URL */
   var path = window.location.pathname;
   var slug = getParam('slug') || path.substring(path.lastIndexOf('/')+1).replace('.html','');
+  var pid = getParam('pid') || '';
 
   /* find product info */
   var info = PRODUCTS[slug] || {title:'Your Notes',emoji:'📚',price:'',downloadUrl:'/'};
@@ -123,14 +124,36 @@ function init(){
   document.getElementById('price').textContent = info.price ? info.price + ' • Payment Confirmed' : 'Payment Confirmed';
 
   var area = document.getElementById('content-area');
-
-  /* === EVERYONE GETS DIRECT DOWNLOAD === */
-  var downloadUrl = info.downloadUrl;
   var msg = "Hi Krishna, '" + info.title + "' (" + info.price + ") chi payment successful zali aahe. Mala notes PDF hawe.";
 
-  area.innerHTML = '<div class="tip-box"><p>💡 <strong>How to save as PDF:</strong> Notes page उघडल्यावर → वरच्या बाजूला भाषा निवडा (मराठी/हिंदी/English) → <strong>Ctrl+P</strong> किंवा <strong>Print</strong> बटण दाबा → <strong>Save as PDF</strong> निवडा → Download!</p></div>'
-    + '<a class="download-btn" href="' + downloadUrl + '" target="_blank">⬇️ तुमची Notes Download करा / Download Your Notes</a>'
-    + '<a class="whatsapp-btn" href="' + waLink(msg) + '" target="_blank">📲 Problem असेल तर WhatsApp करा</a>';
+  /* loading state */
+  area.innerHTML = '<p class="desc">🔄 तुमची payment verify होत आहे… / Verifying your payment…</p>';
+
+  if (!pid) {
+    /* No payment id — cannot verify */
+    area.innerHTML = '<p class="desc">⚠️ Payment verification आवश्यक आहे. कृपया product page वरून <strong>Buy Now</strong> करून payment पूर्ण करा.</p>'
+      + '<a class="whatsapp-btn" href="' + waLink("Hi, mala '" + info.title + "' sathi download link pahije. Payment ID nahi sapadla.") + '" target="_blank">📲 WhatsApp मदत घ्या</a>';
+    return;
+  }
+
+  /* Verify server-side against Razorpay */
+  fetch('/api/verify-payment?pid=' + encodeURIComponent(pid) + '&slug=' + encodeURIComponent(slug))
+    .then(function(resp){ return resp.json(); })
+    .then(function(data){
+      if (data && data.ok === true) {
+        var downloadUrl = '/api/get-content?slug=' + encodeURIComponent(slug) + '&pid=' + encodeURIComponent(pid);
+        area.innerHTML = '<div class="tip-box"><p>💡 <strong>How to save as PDF:</strong> Notes page उघडल्यावर → वरच्या बाजूला भाषा निवडा (मराठी/हिंदी/English) → <strong>Ctrl+P</strong> किंवा <strong>Print</strong> बटण दाबा → <strong>Save as PDF</strong> निवडा → Download!</p></div>'
+          + '<a class="download-btn" href="' + downloadUrl + '" target="_blank">⬇️ तुमची Notes Download करा / Download Your Notes</a>'
+          + '<a class="whatsapp-btn" href="' + waLink(msg) + '" target="_blank">📲 Problem असेल तर WhatsApp करा</a>';
+      } else {
+        area.innerHTML = '<p class="desc">⚠️ Payment verify होऊ शकली नाही. कृपया WhatsApp वरून संपर्क करा — आम्ही लगेच मदत करू.</p>'
+          + '<a class="whatsapp-btn" href="' + waLink("Hi, mala '" + info.title + "' chi payment zali aahe pan download link milala nahi. Payment ID: " + pid) + '" target="_blank">📲 WhatsApp मदत घ्या</a>';
+      }
+    })
+    .catch(function(){
+      area.innerHTML = '<p class="desc">⚠️ Verification service उपलब्ध नाही. कृपया WhatsApp वरून संपर्क करा.</p>'
+        + '<a class="whatsapp-btn" href="' + waLink("Hi, mala '" + info.title + "' chi payment zali aahe pan download link milala nahi. Payment ID: " + pid) + '" target="_blank">📲 WhatsApp मदत घ्या</a>';
+    });
 }
 init();
 </script>

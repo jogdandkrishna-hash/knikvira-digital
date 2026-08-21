@@ -350,12 +350,11 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>सर्व 36 जिल्ह्यांचा भूगोल — नकाशांसह सविस्तर माहिती</li>
-          <li>नद्या, धरणे, खनिज संपत्ती, वने आणि पर्यटन</li>
-          <li>6 विभागानिहाय वर्गीकरण — सोप्या भाषेत</li>
-          <li>45 सराव प्रश्न + उत्तरतालिका</li>
-          <li>⚡ Instant Digital Download (3 भाषा)</li>
-
+          <li data-en="Geography of all 36 districts — detailed info with maps" data-mr="सर्व 36 जिल्ह्यांचा भूगोल — नकाशांसह सविस्तर माहिती">सर्व 36 जिल्ह्यांचा भूगोल — नकाशांसह सविस्तर माहिती</li>
+          <li data-en="Rivers, dams, minerals, forests and tourism" data-mr="नद्या, धरणे, खनिज संपत्ती, वने आणि पर्यटन">नद्या, धरणे, खनिज संपत्ती, वने आणि पर्यटन</li>
+          <li data-en="Division-wise classification (6 divisions) — in simple language" data-mr="6 विभागानिहाय वर्गीकरण — सोप्या भाषेत">6 विभागानिहाय वर्गीकरण — सोप्या भाषेत</li>
+          <li data-en="45 practice questions + answer key" data-mr="45 सराव प्रश्न + उत्तरतालिका">45 सराव प्रश्न + उत्तरतालिका</li>
+          <li data-en="⚡ Instant Digital Download (3 languages)" data-mr="⚡ Instant Digital Download (3 भाषा)">⚡ Instant Digital Download (3 भाषा)</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -423,7 +422,7 @@
         name: "Knikvira Digital", description: productName,
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
-        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug; },
+        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (r && r.razorpay_payment_id ? r.razorpay_payment_id : ""); },
         modal: { ondismiss: function() {} }
       };
       new Razorpay(options).open();

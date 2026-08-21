@@ -350,12 +350,11 @@
       <div class="kd-product-features">
         <div class="kd-product-features-title" data-en="WHAT'S INCLUDED" data-mr="या KIT मध्ये काय मिळेल?">या KIT मध्ये काय मिळेल?</div>
         <ul data-en-feat data-mr-feat>
-          <li>618 शब्द-प्रयोग + 90 सराव प्रश्न Repeated Vocabulary</li>
-          <li>Marathi समानार्थी, विरुद्धार्थी शब्द व म्हणी</li>
-          <li>English Idioms व One Word Substitutions</li>
-          <li>वारंवार विचारले जाणारे प्रश्न पॅटर्न</li>
-          <li>⚡ Instant Digital Download (27 पाने, Trilingual)</li>
-
+          <li data-en="618 word-uses + 90 practice questions — Repeated Vocabulary" data-mr="618 शब्द-प्रयोग + 90 सराव प्रश्न Repeated Vocabulary">618 शब्द-प्रयोग + 90 सराव प्रश्न Repeated Vocabulary</li>
+          <li data-en="Marathi synonyms, antonyms &amp; proverbs" data-mr="Marathi समानार्थी, विरुद्धार्थी शब्द व म्हणी">Marathi समानार्थी, विरुद्धार्थी शब्द व म्हणी</li>
+          <li data-en="English Idioms &amp; One Word Substitutions" data-mr="English Idioms व One Word Substitutions">English Idioms व One Word Substitutions</li>
+          <li data-en="Frequently asked question patterns" data-mr="वारंवार विचारले जाणारे प्रश्न पॅटर्न">वारंवार विचारले जाणारे प्रश्न पॅटर्न</li>
+          <li data-en="⚡ Instant Digital Download (27 pages, Trilingual)" data-mr="⚡ Instant Digital Download (27 पाने, Trilingual)">⚡ Instant Digital Download (27 पाने, Trilingual)</li>
         </ul>
       </div>
       <div class="kd-product-cta">
@@ -423,7 +422,7 @@
         name: "Knikvira Digital", description: productName,
         image: "https://www.knikviradigital.in/knikvira-logo.png",
         theme: { color: "#4f46e5" },
-        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug; },
+        handler: function(r) { window.location.href = "/download-smart.html?slug=" + downloadSlug + "&pid=" + (r && r.razorpay_payment_id ? r.razorpay_payment_id : ""); },
         modal: { ondismiss: function() {} }
       };
       new Razorpay(options).open();
