@@ -34,6 +34,25 @@ h1{font-size:21px;font-weight:900;color:#0d1b2a;margin-bottom:8px;line-height:1.
 .trust{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
 .trust span{background:#ecfdf5;color:#047857;font-size:11.5px;font-weight:800;padding:6px 12px;border-radius:8px;border:1px solid #a7f3d0}
 </style>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Knikvira Digital" />
+  <meta property="og:title" content="Download Your Notes | Knikvira Digital" />
+  <meta property="og:description" content="Payment successful — तुमच्या खरेदी केलेल्या Notes चा download link येथे मिळेल." />
+  <meta property="og:url" content="https://www.knikviradigital.in/download-smart.html" />
+  <meta property="og:image" content="https://www.knikviradigital.in/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="mr_IN" />
+  <meta property="og:locale:alternate" content="en_IN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Download Your Notes | Knikvira Digital" />
+  <meta name="twitter:description" content="Payment successful — find your download link for the notes you purchased here." />
+  <meta name="twitter:image" content="https://www.knikviradigital.in/og-image.jpg" />
+  <meta name="description" content="Payment successful — तुमच्या खरेदी केलेल्या Notes चा download link येथे मिळेल." />
 </head>
 <body>
 <nav class="kd-nav" id="kdNav" style="position:relative"><div class="kd-nav-inner"><a href="https://www.knikviradigital.in/" class="kd-nav-brand"><div class="kd-nav-brand-icon"><img src="/knikvira-logo.png" alt="Knikvira Digital" /></div><div class="kd-nav-brand-text"><span>KNIKVIRA</span> DIGITAL</div></a><a href="https://www.knikviradigital.in/products.html" class="kd-nav-cta" style="margin-left:auto">📚 All Kits</a>
@@ -132,7 +151,7 @@ function init(){
   if (!pid) {
     /* No payment id — cannot verify */
     area.innerHTML = '<p class="desc">⚠️ Payment verification आवश्यक आहे. कृपया product page वरून <strong>Buy Now</strong> करून payment पूर्ण करा.</p>'
-      + '<a class="whatsapp-btn" href="' + waLink("Hi, mala '" + info.title + "' sathi download link pahije. Payment ID nahi sapadla.") + '" target="_blank">📲 WhatsApp मदत घ्या</a>';
+      + '<a class="whatsapp-btn" href="' + waLink("Hi, mala '" + info.title + "' sathi download link pahije. Payment ID nahi sapadla.") + '" target="_blank" rel="noopener noreferrer">📲 WhatsApp मदत घ्या</a>';
     return;
   }
 
@@ -143,16 +162,16 @@ function init(){
       if (data && data.ok === true) {
         var downloadUrl = '/api/get-content?slug=' + encodeURIComponent(slug) + '&pid=' + encodeURIComponent(pid);
         area.innerHTML = '<div class="tip-box"><p>💡 <strong>How to save as PDF:</strong> Notes page उघडल्यावर → वरच्या बाजूला भाषा निवडा (मराठी/हिंदी/English) → <strong>Ctrl+P</strong> किंवा <strong>Print</strong> बटण दाबा → <strong>Save as PDF</strong> निवडा → Download!</p></div>'
-          + '<a class="download-btn" href="' + downloadUrl + '" target="_blank">⬇️ तुमची Notes Download करा / Download Your Notes</a>'
-          + '<a class="whatsapp-btn" href="' + waLink(msg) + '" target="_blank">📲 Problem असेल तर WhatsApp करा</a>';
+          + '<a class="download-btn" href="' + downloadUrl + '" target="_blank" rel="noopener noreferrer">⬇️ तुमची Notes Download करा / Download Your Notes</a>'
+          + '<a class="whatsapp-btn" href="' + waLink(msg) + '" target="_blank" rel="noopener noreferrer">📲 Problem असेल तर WhatsApp करा</a>';
       } else {
         area.innerHTML = '<p class="desc">⚠️ Payment verify होऊ शकली नाही. कृपया WhatsApp वरून संपर्क करा — आम्ही लगेच मदत करू.</p>'
-          + '<a class="whatsapp-btn" href="' + waLink("Hi, mala '" + info.title + "' chi payment zali aahe pan download link milala nahi. Payment ID: " + pid) + '" target="_blank">📲 WhatsApp मदत घ्या</a>';
+          + '<a class="whatsapp-btn" href="' + waLink("Hi, mala '" + info.title + "' chi payment zali aahe pan download link milala nahi. Payment ID: " + pid) + '" target="_blank" rel="noopener noreferrer">📲 WhatsApp मदत घ्या</a>';
       }
     })
     .catch(function(){
       area.innerHTML = '<p class="desc">⚠️ Verification service उपलब्ध नाही. कृपया WhatsApp वरून संपर्क करा.</p>'
-        + '<a class="whatsapp-btn" href="' + waLink("Hi, mala '" + info.title + "' chi payment zali aahe pan download link milala nahi. Payment ID: " + pid) + '" target="_blank">📲 WhatsApp मदत घ्या</a>';
+        + '<a class="whatsapp-btn" href="' + waLink("Hi, mala '" + info.title + "' chi payment zali aahe pan download link milala nahi. Payment ID: " + pid) + '" target="_blank" rel="noopener noreferrer">📲 WhatsApp मदत घ्या</a>';
     });
 }
 init();
