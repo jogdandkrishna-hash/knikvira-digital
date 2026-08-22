@@ -8,7 +8,7 @@
    decide whether to show the download link.
 
    Required environment variables (Vercel → Settings → Environment Variables):
-     RAZORPAY_KEY_ID      e.g. rzp_live_TKphKiYGjotBE7
+     RAZORPAY_KEY_ID      e.g. rzp_live_TSQwgbmf1nyZxY
      RAZORPAY_KEY_SECRET  (the SECRET key from your Razorpay dashboard — never commit it)
    ============================================================ */
 

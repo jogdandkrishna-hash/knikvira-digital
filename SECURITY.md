@@ -63,14 +63,14 @@ In **Vercel → your project → Settings → Environment Variables**, add:
 
 | Name | Value |
 |---|---|
-| `RAZORPAY_KEY_ID` | `rzp_live_TKphKiYGjotBE7` (your live key id) |
+| `RAZORPAY_KEY_ID` | `rzp_live_TSQwgbmf1nyZxY` (your live key id) |
 | `RAZORPAY_KEY_SECRET` | your live **secret** from Razorpay Dashboard → Settings → API Keys |
 
 Then redeploy. Until `RAZORPAY_KEY_SECRET` is set, the functions **fail closed**
 (return `ok: false` / 403), so nothing is served — this is intentional and safe,
 but you must set the variable before going live.
 
-> ⚠️ The public `key` (`rzp_live_TKphKiYGjotBE7`) already in the HTML is fine to
+> ⚠️ The public `key` (`rzp_live_TSQwgbmf1nyZxY`) already in the HTML is fine to
 > keep public — that is how Razorpay is designed. The **secret** is the sensitive
 > value; never commit it or share it in chat.
 
