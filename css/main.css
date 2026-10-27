@@ -538,7 +538,7 @@ ul, ol { list-style: none; }
 }
 .kd-badge-best { background: var(--gradient-accent); color: var(--dark); }
 .kd-badge-new { background: var(--gradient-primary); color: white; }
-.kd-badge-popular { background: #ef4444; color: white; }
+.kd-badge-popular { background: var(--ink); color:#fff; }
 
 .kd-product-icon {
   width: 44px; height: 44px;
@@ -875,7 +875,7 @@ ul, ol { list-style: none; }
 .kd-sample-icon {
   font-size: 24px; width: 44px; height: 44px; flex: 0 0 44px;
   display: grid; place-items: center;
-  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  background: var(--paper-2);
   border-radius: var(--radius);
 }
 .kd-sample-card b {
@@ -1129,7 +1129,7 @@ ul, ol { list-style: none; }
 .kd-price-current { font-size: var(--font-size-xl); font-weight: 900; color: var(--primary); }
 .kd-price-original { font-size: var(--font-size-sm); color: var(--text-muted); text-decoration: line-through; }
 .kd-price-discount {
-  background: #fef2f2; color: #dc2626;
+  background:#fef3c7; color:#b45309;
   padding: 2px 8px; border-radius: 6px;
   font-size: var(--font-size-xs); font-weight: 800;
 }
@@ -1408,7 +1408,7 @@ ul, ol { list-style: none; }
 .kd-sample-icon {
   font-size: 24px; width: 44px; height: 44px; flex: 0 0 44px;
   display: grid; place-items: center;
-  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  background: var(--paper-2);
   border-radius: var(--radius);
 }
 .kd-sample-card b {
@@ -1847,4 +1847,10 @@ table td, .kd-table td, .kd-compare td { color: var(--ink); background: #fff; }
 .kd-nav-brand-icon { background: var(--ink) !important; background-image: none !important;
   border: 1px solid var(--ink) !important; border-radius: 10px !important; box-shadow: none !important; }
 .kd-nav-brand { color: var(--ink) !important; }
+/* info पानांची includes-note + discount badge कागद-प्रणालीत (page-local CSS पेक्षा वर) */
+.kd-product-includes { background: var(--paper-2) !important; color: var(--ink) !important;
+  border: 1px solid var(--line) !important; border-radius: 12px !important; box-shadow: none !important; }
+.kd-product-price-discount, .kd-price-discount { background: #fef3c7 !important; color: #b45309 !important;
+  border: 1px solid rgba(180,83,9,.28) !important; }
+.kd-badge-popular, .kd-badge-new { background: var(--ink) !important; background-image: none !important; color: #fff !important; }
 
