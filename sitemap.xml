@@ -5,145 +5,138 @@
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/products.html</loc>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/about.html</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/blog.html</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/free-pyq.html</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/privacy-policy.html</loc>
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/terms.html</loc>
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/refund-policy.html</loc>
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>
-  <!-- MPSC + UPSC Products -->
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/mpsc-rajyaseva-study-kit-info.html</loc>
     <priority>0.8</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/upsc-prelims-master-book-info.html</loc>
     <priority>0.8</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/mpsc-previous-year-questions-info.html</loc>
     <priority>0.7</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/mpsc-polity-quick-notes-info.html</loc>
     <priority>0.7</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/upsc-polity-mcq-set-info.html</loc>
     <priority>0.7</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/csat-practice-starter-info.html</loc>
     <priority>0.7</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/upsc-current-affairs-starter-info.html</loc>
     <priority>0.7</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/maharashtra-gk-atlas-ebook-info.html</loc>
     <priority>0.8</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/maharashtra-gk-revision-pack-info.html</loc>
     <priority>0.7</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/ncert-foundation-notes-info.html</loc>
     <priority>0.8</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/mpsc-group-c-vyakaran-info.html</loc>
     <priority>0.8</priority>
   </url>
-  <!-- Police Bharti -->
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/police-bharti-question-bank-info.html</loc>
     <priority>0.8</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/police-bharti-complete-guide-info.html</loc>
     <priority>0.7</priority>
   </url>
-  <!-- Talathi -->
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/talathi-vocabulary-master-info.html</loc>
     <priority>0.8</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/talathi-bharti-guide-info.html</loc>
     <priority>0.7</priority>
   </url>
-  <!-- Handwritten Notes -->
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/handwritten-quick-notes-info.html</loc>
     <priority>0.8</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/handwritten-vahi-notes-vol2-info.html</loc>
     <priority>0.8</priority>
   </url>
-  <!-- English + Career -->
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/30-days-english-speaking-practice-info.html</loc>
     <priority>0.6</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/job-application-kit-for-freshers-info.html</loc>
     <priority>0.6</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/student-study-planner-info.html</loc>
     <priority>0.6</priority>
   </url>
-  <!-- Blog Posts -->
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/blog-talathi-syllabus-2026.html</loc>
     <priority>0.7</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/blog-mpsc-90-day-plan.html</loc>
     <priority>0.7</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/blog-police-bharti-2026.html</loc>
     <priority>0.7</priority>
   </url>
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/blog-rapid-revision-tips.html</loc>
     <priority>0.7</priority>
   </url>
-  <!-- Combo Bundles / Books Stock -->
-  <url>
+<url>
     <loc>https://www.knikviradigital.in/knikvira_pro.html</loc>
     <priority>0.8</priority>
   </url>
