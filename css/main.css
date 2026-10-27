@@ -1501,150 +1501,350 @@ ul, ol { list-style: none; }
 .kd-observe.visible { animation: fadeInUp 0.6s ease-out forwards; }
 
 /* ============================================================
-   MODERN UI LAYER — 2026 refresh
-   Additive overrides only; same token names, same class names.
-   Goals: calmer type scale, real spatial rhythm, hairline
-   borders instead of boxes, depth on hover, visible focus.
+   PAPER & INK — Gumroad-आधारित design system (2026-10-27)
+   मोजलेल्या values: bg #f4f4f0 · ink #000 · secondary black@50%
+   h1 96px/lh1/weight400/ls-0.4px · buttons #000-on-#fff radius 0-4px,
+   no shadow · cards #fff radius 24px + 1px grey border, no shadow.
+   ABC Favorit proprietary आहे → त्यांचा font घेतलेला नाही; site आधीपासून
+   Inter + Noto Sans Devanagari वापरतं तेच कायम.
+   हे module tokens पुनर्लिहितो (एका जागी बदल → सगळ्या 34 पानांना),
+   मग hard-coded white text च्या 26 selectors ला ink करतो.
+   ⚠️ .kd-hero-grid = absolute decorative overlay; त्याला कधीच box-model
+   property (max-width/margin/gap) देऊ नये — देऊन hero content सरकला होता.
    ============================================================ */
 :root {
-  --ease: cubic-bezier(.22, 1, .36, 1);
-  --ease-out: cubic-bezier(.16, 1, .3, 1);
-  --hairline: rgba(15, 23, 42, .07);
-  --hairline-strong: rgba(15, 23, 42, .12);
-  --lift: 0 1px 2px rgba(15,23,42,.04), 0 8px 24px -12px rgba(15,23,42,.14);
-  --lift-hover: 0 2px 4px rgba(15,23,42,.05), 0 26px 50px -22px rgba(30,27,75,.30);
-  --shell-max: 1180px;
+  --paper: #f4f4f0;
+  --paper-2: #eceae4;
+  --ink: #0d0d0c;
+  --ink-2: rgba(13, 13, 12, .62);
+  --ink-3: rgba(13, 13, 12, .42);
+  --line: rgba(13, 13, 12, .2);
+  --line-soft: rgba(13, 13, 12, .11);
+  --accent-ink: #0d0d0c;
+
+  /* brand tokens → ink/paper (जे theme करणं शक्य तितकं कमी आहे) */
+  --primary: #0d0d0c;
+  --primary-light: rgba(13, 13, 12, .55);
+  --primary-dark: #000000;
+  --bg: var(--paper);
+  --bg-soft: var(--paper-2);
+  --bg-muted: #f8f7f4;
+  --surface: #ffffff;
+  --dark: #0d0d0c;
+  --dark-navy: #1a1a18;
+  --text: #0d0d0c;
+  --text-secondary: var(--ink-2);
+  --text-muted: var(--ink-3);
+  --border: var(--line);
+  --border-light: var(--line-soft);
+  --gradient-hero: #0d0d0c;   /* paper bands: hero/testimonials खुप आहेत; पानांतल्या local
+                           styles मध्ये white text आहे त्या bands साठी ink */
+  --gradient-accent: #0d0d0c;   /* amber फक्त badge/price ला दिला; button accent होतं तर
+                             white-on-amber 2.1:1 contrast येत होता */
+
+  /* radius: Gumroad = cards 24px, buttons 4px, chips pill */
+  --radius-sm: 6px;
+  --radius: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 24px;
+
+  /* त्यांचा कोणताही box-shadow नाही — कागदावर छापलेलं वाटावं */
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-glow: none;
+  --shadow-accent-glow: none;
+  --ease: cubic-bezier(.2, .8, .2, 1);
 }
 
-/* ---- rhythm & type ---- */
-body { font-size: 16.5px; line-height: 1.62; letter-spacing: -.011em; text-rendering: optimizeLegibility; }
-h1, h2, h3, h4 { text-wrap: balance; }
+/* ---------- type: मोठं पण हलकं (Gumroad cha signature) ---------- */
+body { background: var(--paper); color: var(--ink); font-size: 16.5px; line-height: 1.55; letter-spacing: -.011em; }
+h1, h2, h3, h4 { color: var(--ink); font-weight: 400; letter-spacing: -.03em; line-height: 1.06; text-wrap: balance; }
+h1 { font-size: clamp(40px, 6vw, 76px); }
 p { text-wrap: pretty; }
-.kd-section { padding: clamp(64px, 8vw, 108px) var(--spacing-lg); }
-.kd-section-inner { max-width: var(--shell-max); margin: 0 auto; }
-.kd-section-header { margin-bottom: clamp(30px, 4vw, 52px); }
-.kd-section-title { font-size: clamp(27px, 3.4vw, 42px); font-weight: 800; letter-spacing: -.028em; line-height: 1.12; }
-.kd-section-sub, .kd-section-desc { font-size: 17px; line-height: 1.6; color: var(--text-secondary); max-width: 64ch; margin-left: auto; margin-right: auto; }
-.kd-section-label {
-  font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--primary); padding: 6px 12px 6px 10px; border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--primary) 16%, transparent);
-}
-.kd-section-label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-.kd-section-label.accent { color: var(--accent-dark); background: color-mix(in srgb, var(--accent) 12%, transparent); border-color: color-mix(in srgb, var(--accent) 24%, transparent); }
+.kd-section { padding: clamp(56px, 8vw, 112px) 24px; }
+.kd-section-inner { max-width: 1140px; margin: 0 auto; }
+.kd-section-title, .kd-page-hero-title { font-size: clamp(28px, 3.4vw, 46px); font-weight: 400; letter-spacing: -.03em; line-height: 1.1; }
+.kd-section-sub, .kd-section-desc, .kd-page-hero-desc { font-size: 17px; line-height: 1.55; color: var(--ink-2); letter-spacing: -.011em; max-width: 62ch; margin-inline: auto; }
+.kd-section-header { margin-bottom: clamp(28px, 3.6vw, 48px); }
+.kd-section-label, .kd-section-label.accent {
+  font-size: 11.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2);
+  background: #fff; border: 1px solid var(--line); border-radius: 9999px; padding: 6px 12px; }
+.kd-section-label::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #f59e0b; }
 
-/* ---- nav: quieter, hairline only when it needs to be ---- */
-.kd-nav { height: 64px; background: rgba(9, 11, 24, .68); border-bottom: 1px solid transparent;
-  backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
-  transition: background .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease); }
-.kd-nav.scrolled { background: rgba(9, 11, 24, .88); border-bottom-color: rgba(255,255,255,.09); box-shadow: 0 10px 30px -18px rgba(0,0,0,.55); }
-.kd-nav-inner { max-width: var(--shell-max); gap: 18px; }
-.kd-nav-brand { font-size: 16px; font-weight: 750; letter-spacing: -.02em; }
-.kd-nav-brand-icon { border-radius: 10px; box-shadow: 0 4px 14px -6px rgba(245,158,11,.55); }
-.kd-nav-link { font-size: 14.5px; font-weight: 550; letter-spacing: -.005em; padding: 7px 12px; border-radius: var(--radius-pill);
-  transition: background .2s var(--ease), color .2s var(--ease); }
-.kd-nav-link:hover { background: rgba(255,255,255,.09); }
-.kd-nav-cta { padding: 9px 16px; border-radius: var(--radius-pill); font-weight: 650; font-size: 14px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 8px 20px -10px rgba(245,158,11,.75);
-  transition: transform .2s var(--ease), box-shadow .2s var(--ease), filter .2s var(--ease); }
-.kd-nav-cta:hover { transform: translateY(-1px); filter: saturate(1.1) brightness(1.04); }
-.kd-lang-switcher, .kd-lang-switcher-mobile { padding: 3px; gap: 2px; border-radius: var(--radius-pill);
-  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); }
-.kd-lang-btn { border-radius: var(--radius-pill); font-size: 12.5px; font-weight: 600; padding: 5px 10px; min-height: 30px;
-  transition: background .18s var(--ease), color .18s var(--ease); }
-.kd-lang-btn.active, .kd-lang-btn[aria-pressed="true"] { background: rgba(255,255,255,.92); color: var(--dark); }
+/* ---------- nav: कागद, hairline, ink ---------- */
+.kd-nav { background: rgba(244, 244, 240, .88); border-bottom: 1px solid var(--line-soft);
+  backdrop-filter: saturate(1.2) blur(10px); -webkit-backdrop-filter: saturate(1.2) blur(10px); height: 66px; }
+.kd-nav.scrolled { background: rgba(244, 244, 240, .96); border-bottom-color: var(--line); box-shadow: none; }
+.kd-nav-inner { max-width: 1140px; gap: 14px; }
+.kd-nav-brand, .kd-nav-brand span { color: var(--ink); font-weight: 600; letter-spacing: -.02em; }
+.kd-nav-brand span { color: var(--ink); }
+.kd-nav-brand-icon { background: var(--ink); border-radius: 9px; box-shadow: none; }
+.kd-nav-link { color: var(--ink-2); font-size: 14.5px; font-weight: 500; padding: 6px 11px; border-radius: 8px; transition: color .18s var(--ease), background .18s var(--ease); }
+.kd-nav-link:hover, .kd-nav-link.active { color: var(--ink); background: rgba(13, 13, 12, .06); }
+.kd-nav-cta { background: var(--ink) !important; color: #fff !important; border-radius: 8px; padding: 9px 15px; font-weight: 500; box-shadow: none; }
+.kd-nav-cta:hover { background: #000 !important; transform: none; filter: none; }
+.kd-nav-mobile-btn { color: var(--ink); }
+.kd-nav-mobile-menu { background: var(--paper); border-bottom: 1px solid var(--line); backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: 0 18px 40px -28px rgba(13, 13, 12, .5); }
+.kd-nav-mobile-menu a { color: var(--ink-2) !important; }
+.kd-nav-mobile-menu a:hover { color: var(--ink) !important; background: rgba(13, 13, 12, .05); }
+.kd-lang-switcher, .kd-lang-switcher-mobile { background: #fff; border: 1px solid var(--line); border-radius: 9999px; padding: 3px; }
+.kd-lang-btn, .kd-lang-btn-mobile { color: var(--ink-2); border-radius: 9999px; font-weight: 500; }
+.kd-lang-btn:hover:not(.active) { background: rgba(13, 13, 12, .06); color: var(--ink); }
+.kd-lang-btn.active, .kd-lang-btn[aria-pressed="true"] { background: var(--ink); color: #fff !important; }
 
-/* ---- hero: taller type, softer glow, glass stat row ---- */
-/* note: .kd-hero-grid is an absolute decorative overlay (main.css:273), NOT a
-   layout wrapper — never restyle it, or it joins the flex row and shoves
-   .kd-hero-content sideways. */
-.kd-hero { min-height: min(86svh, 860px); padding: calc(var(--nav-height) + clamp(28px, 5vw, 58px)) var(--spacing-lg) clamp(44px, 7vw, 82px); }
-.kd-hero::before { content: ""; position: absolute; inset: -20% -10% auto -10%; height: 70%;
-  background: radial-gradient(60% 60% at 22% 20%, rgba(129,140,248,.30), transparent 70%),
-              radial-gradient(50% 50% at 82% 8%, rgba(245,158,11,.16), transparent 72%);
-  pointer-events: none; }
-.kd-hero-title { font-size: clamp(34px, 3.6vw, 52px); font-weight: 800; line-height: 1.06; letter-spacing: -.03em; }
-.kd-hero-title em, .kd-hero-title span.hl { font-style: normal;
-  background: linear-gradient(96deg, #fbbf24, #f59e0b 55%, #f97316); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.kd-hero-badge { font-size: 12.5px; font-weight: 600; letter-spacing: .005em; padding: 7px 14px;
-  border-radius: var(--radius-pill); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-.kd-hero-desc, .kd-hero-sub { font-size: clamp(16.5px, 1.4vw, 18.5px); line-height: 1.62; color: rgba(255,255,255,.76); max-width: 56ch; }
-.kd-hero-stats { display: flex; flex-wrap: wrap; align-items: center; gap: 0; padding: 14px 6px;
-  border-radius: var(--radius-xl); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-.kd-hero-stat { padding: 4px 20px; }
-.kd-hero-stat-num { font-size: 22px; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
-.kd-hero-stat-label { font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: rgba(255,255,255,.6); }
-.kd-hero-stat-divider { width: 1px; height: 28px; background: rgba(255,255,255,.16); }
+/* ---------- hero: कागदावर मोठं हलंकं शीर्षक, dark gradient नाही ---------- */
+.kd-hero, .kd-page-hero { background: var(--paper); min-height: auto; padding: calc(66px + clamp(48px, 7vw, 88px)) 24px clamp(48px, 7vw, 88px); }
+.kd-hero-grid { background-image: linear-gradient(rgba(13, 13, 12, .045) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(13, 13, 12, .045) 1px, transparent 1px); }
+.kd-hero::before { content: none; }
+.kd-hero-title, .kd-page-hero-title { color: var(--ink) !important; font-weight: 400; letter-spacing: -.035em; line-height: 1.04; }
+.kd-hero-title em, .kd-hero-title span.hl { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #b45309; }
+.kd-hero-desc, .kd-hero-sub, .kd-page-hero-desc { color: var(--ink-2) !important; }
+.kd-hero-badge, .kd-page-hero-badge { background: #fff; border: 1px solid var(--line); color: var(--ink-2) !important;
+  border-radius: 9999px; padding: 7px 13px; font-size: 13px; font-weight: 500; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.kd-hero-stats, .kd-page-hero-stats { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-xl);
+  padding: 16px 8px; gap: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; backdrop-filter: none; }
+.kd-hero-stat, .kd-page-hero-stat { padding: 6px 22px; }
+.kd-hero-stat-num, .kd-page-hero-stat-num { color: var(--ink) !important; font-size: 21px; font-weight: 500; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.kd-hero-stat-label, .kd-page-hero-stat-label { color: var(--ink-3) !important; font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+.kd-hero-stat-divider, .kd-page-hero-stat-divider { background: var(--line-soft); width: 1px; height: 26px; }
 
-/* ---- buttons: one accent, real feedback ---- */
+/* ---------- buttons: काळा, कोपरा 8px, सावली नाही ---------- */
 .kd-btn-primary, .kd-btn-buy, .kd-btn-banner {
-  border-radius: var(--radius-pill); padding: 13px 24px; font-weight: 680; font-size: 15.5px; letter-spacing: -.005em;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.38), 0 12px 26px -14px rgba(245,158,11,.85);
-  transition: transform .2s var(--ease), box-shadow .2s var(--ease), filter .2s var(--ease); }
-.kd-btn-primary:hover, .kd-btn-buy:hover, .kd-btn-banner:hover { transform: translateY(-2px); filter: saturate(1.06) brightness(1.03);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 18px 34px -16px rgba(245,158,11,.95); }
-.kd-btn-primary:active, .kd-btn-buy:active, .kd-btn-banner:active { transform: translateY(0) scale(.99); }
-.kd-btn-secondary, .kd-btn-sample { border-radius: var(--radius-pill); padding: 12px 22px; font-weight: 620; font-size: 15.5px;
-  border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.07);
-  transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease); }
-.kd-btn-secondary:hover, .kd-btn-sample:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.34); transform: translateY(-1px); }
+  background: var(--ink); color: #fff; border: 1px solid var(--ink); border-radius: 8px;
+  padding: 12px 22px; font-weight: 500; font-size: 15.5px; letter-spacing: -.01em; box-shadow: none;
+  transition: background .16s var(--ease), transform .16s var(--ease); }
+.kd-btn-primary:hover, .kd-btn-buy:hover, .kd-btn-banner:hover { background: #000; transform: none; box-shadow: none; filter: none; }
+.kd-btn-primary:active, .kd-btn-buy:active { transform: translateY(1px); }
+.kd-btn-secondary, .kd-btn-sample {
+  background: #fff; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 12px 20px;
+  font-weight: 500; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.kd-btn-secondary:hover, .kd-btn-sample:hover { background: #fbfaf7; border-color: rgba(13, 13, 12, .35); transform: none; }
 
-/* ---- cards: hairlines + depth, not boxes ---- */
-.kd-product-card, .kd-exam-card, .kd-related-card, .kd-blog-card {
-  border: 1px solid var(--hairline); border-radius: 22px; background: #fff;
-  box-shadow: var(--lift);
-  transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease); }
-.kd-product-card:hover, .kd-exam-card:hover, .kd-related-card:hover, .kd-blog-card:hover {
-  transform: translateY(-4px); box-shadow: var(--lift-hover); border-color: color-mix(in srgb, var(--primary) 22%, var(--hairline)); }
-.kd-product-card img, .kd-blog-card img { transition: transform .5s var(--ease); }
-.kd-product-card:hover img, .kd-blog-card:hover img { transform: scale(1.035); }
-.kd-product-name, .kd-related-card-name { font-size: 17.5px; font-weight: 720; letter-spacing: -.018em; line-height: 1.28; }
-.kd-product-desc { font-size: 14.5px; line-height: 1.55; color: var(--text-secondary); }
-.kd-product-price, .kd-related-card-price { font-variant-numeric: tabular-nums; letter-spacing: -.02em; font-weight: 800; }
-.kd-product-meta-tag { font-size: 11.5px; font-weight: 600; letter-spacing: .01em; padding: 4px 9px; border-radius: 8px;
-  background: var(--bg-muted); border: 1px solid var(--hairline); color: var(--text-secondary); }
-.kd-products-grid, .kd-exam-grid { gap: clamp(14px, 1.5vw, 22px); }
-.kd-products-grid { grid-template-columns: repeat(auto-fill, minmax(292px, 1fr)); }
-.kd-badge-popular, .kd-badge-best, .kd-badge-new { font-size: 11px; font-weight: 750; letter-spacing: .05em; text-transform: uppercase;
-  padding: 5px 10px; border-radius: var(--radius-pill); box-shadow: 0 6px 16px -8px rgba(15,23,42,.5); }
+/* ---------- cards: कागदावर पांढऱ्या पेटी, 24px radius, hairline, shadow नाही ---------- */
+.kd-product-card, .kd-exam-card, .kd-related-card, .kd-blog-card, .kd-testimonial-card, .kd-kit-card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius-xl); box-shadow: none;
+  transition: border-color .2s var(--ease), transform .2s var(--ease); }
+.kd-product-card:hover, .kd-exam-card:hover, .kd-related-card:hover, .kd-blog-card:hover, .kd-testimonial-card:hover {
+  border-color: rgba(13, 13, 12, .42); transform: translateY(-2px); box-shadow: none; }
+.kd-product-card img, .kd-blog-card img { transition: transform .4s var(--ease); }
+.kd-product-card:hover img, .kd-blog-card:hover img { transform: scale(1.02); }
+.kd-product-name, .kd-related-card-name { font-size: 17px; font-weight: 600; letter-spacing: -.02em; line-height: 1.3; color: var(--ink); }
+.kd-product-desc { font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+.kd-product-cat { font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.kd-product-price, .kd-related-card-price { color: var(--ink) !important; font-weight: 600; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.kd-product-price s, .kd-product-price .old, .kd-related-card-price s { color: var(--ink-3); font-weight: 400; }
+.kd-product-meta-tag { background: transparent; border: 1px solid var(--line-soft); color: var(--ink-2);
+  font-size: 11.5px; font-weight: 500; padding: 4px 9px; border-radius: 9999px; }
+.kd-products-grid, .kd-exam-grid, .kd-kits-grid { gap: clamp(12px, 1.4vw, 20px); }
+.kd-products-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.kd-badge, .kd-badge-popular, .kd-badge-best, .kd-badge-new {
+  background: #f59e0b; color: #0d0d0c; border: none; font-size: 11px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; padding: 5px 10px; border-radius: 9999px; box-shadow: none; }
 
-/* ---- CTA + testimonials + footer ---- */
-.kd-cta-card, .kd-cta-section { border-radius: clamp(22px, 2.6vw, 32px); }
-.kd-cta-card { padding: clamp(34px, 5vw, 60px) clamp(22px, 4vw, 52px); box-shadow: 0 30px 70px -34px rgba(30,27,75,.55); }
-.kd-cta-title { font-size: clamp(24px, 3.2vw, 38px); font-weight: 820; letter-spacing: -.03em; line-height: 1.12; }
-.kd-testimonials-section { padding-block: clamp(64px, 8vw, 108px); }
-.kd-footer { background: #080b18; padding: clamp(56px, 7vw, 88px) var(--spacing-lg) var(--spacing-lg); }
-.kd-footer a { transition: color .18s var(--ease); }
-.kd-footer a:hover { color: #fff; }
-.kd-footer-bottom { font-size: 13px; color: rgba(255,255,255,.45); }
-.kd-footer-bottom a:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* ---------- testimonials: आता कागदावर (dark band नाही) ---------- */
+.kd-testimonials-section { background: var(--paper); color: var(--ink); }
+.kd-testimonials-section .kd-section-title { color: var(--ink); }
+.kd-testimonial-card { background: #fff; border: 1px solid var(--line); backdrop-filter: none; -webkit-backdrop-filter: none; padding: 26px; }
+.kd-testimonial-card:hover { background: #fff; }
+.kd-testimonial-quote { color: var(--ink) !important; font-size: 16.5px; line-height: 1.55; font-weight: 400; }
+.kd-testimonial-name { color: var(--ink) !important; font-weight: 600; }
+.kd-testimonial-detail { color: var(--ink-3) !important; }
 
-/* ---- a11y & polish ---- */
-:where(a, button, [tabindex], .kd-lang-btn, .kd-nav-link):focus-visible {
-  outline: 2px solid var(--primary-light); outline-offset: 3px; border-radius: 10px; }
-::selection { background: color-mix(in srgb, var(--primary) 22%, transparent); }
-/* (ruled out: a stray space had split .kd-btn-secondary) */
+/* ---------- CTA + banner: एकच dark anchor ---------- */
+.kd-cta-section { background: var(--paper); }
+.kd-cta-card, .kd-banner { background: var(--ink); border-radius: var(--radius-xl); }
+.kd-cta-card::before, .kd-cta-card::after, .kd-banner::before { content: none; }
+.kd-cta-title, .kd-banner-title { color: #fff !important; font-weight: 400; letter-spacing: -.03em; font-size: clamp(26px, 3.4vw, 44px); }
+.kd-cta-desc, .kd-banner-desc { color: rgba(255, 255, 255, .66) !important; }
+.kd-cta-card .kd-btn-primary, .kd-banner .kd-btn-primary { background: #fff; color: var(--ink); border-color: #fff; }
+.kd-cta-card .kd-btn-primary:hover, .kd-banner .kd-btn-primary:hover { background: #f4f4f0; }
+.kd-cta-card .kd-btn-secondary, .kd-banner .kd-btn-secondary { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .3); }
+.kd-cta-card .kd-btn-secondary:hover { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .5); }
+
+/* ---------- footer: कागद + hairline (dark block नाही) ---------- */
+.kd-footer { background: var(--paper); color: var(--ink-2); border-top: 1px solid var(--line-soft); padding: clamp(52px, 6vw, 80px) 24px 28px; }
+.kd-footer-inner { max-width: 1140px; margin: 0 auto; }
+.kd-footer h4, .kd-footer strong, .kd-footer .kd-nav-brand { color: var(--ink); }
+.kd-footer a { color: var(--ink-2); }
+.kd-footer a:hover { color: var(--ink); }
+.kd-footer-bottom { border-top: 1px solid var(--line-soft); color: var(--ink-3); font-size: 13px; }
+.kd-footer [style*="color:white"], .kd-footer [style*="color: white"] { color: var(--ink) !important; }
+.kd-footer [style*="var(--accent-light)"] { color: var(--ink) !important; }
+
+/* ---------- a11y ---------- */
+:where(a, button, [tabindex], .kd-lang-btn, .kd-nav-link):focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 6px; }
+::selection { background: rgba(245, 158, 11, .32); }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important; scroll-behavior: auto !important; }
-  .kd-product-card:hover, .kd-exam-card:hover, .kd-related-card:hover, .kd-blog-card:hover,
-  .kd-btn-primary:hover, .kd-btn-secondary:hover, .kd-nav-cta:hover { transform: none; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .kd-product-card:hover, .kd-exam-card:hover, .kd-related-card:hover, .kd-blog-card:hover, .kd-testimonial-card:hover { transform: none; }
 }
 @media (max-width: 768px) {
-  .kd-hero-title { letter-spacing: -.024em; font-size: clamp(28px, 8.2vw, 34px); }
-  .kd-hero-badge { font-size: 12px; }
-  .kd-hero-stats { gap: 4px; padding: 12px 4px; }
-  .kd-hero-stat { padding: 4px 14px; }
-  .kd-btn-primary, .kd-btn-secondary, .kd-btn-buy, .kd-btn-sample { width: 100%; justify-content: center; min-height: 46px; }
-  .kd-section { padding: clamp(48px, 12vw, 64px) 18px; }
+  .kd-hero, .kd-page-hero { padding: calc(60px + 34px) 18px 40px; }
+  h1 { font-size: clamp(33px, 9.4vw, 42px); }
+  .kd-hero-title { letter-spacing: -.028em; }
+  .kd-section { padding: 52px 18px; }
   .kd-products-grid { grid-template-columns: 1fr; }
+  .kd-hero-stat, .kd-page-hero-stat { padding: 6px 14px; }
+  .kd-btn-primary, .kd-btn-secondary, .kd-btn-buy, .kd-btn-sample { width: 100%; justify-content: center; min-height: 46px; }
 }
+/* ---------- leftover glow/orb + gradient tokens → ink (paper वर हेच
+   दोन gradient-outlets होते: .kd-hero-orb blobs आणि --gradient-primary) ---------- */
+:root {
+  --gradient-primary: #0d0d0c;
+  --gradient-dark: #0d0d0c;
+  --gradient-card-light: #ffffff;
+  --gradient-success: #059669;
+  --gradient-accent-soft: var(--paper-2);
+}
+.kd-hero-orb, .kd-orb, .hero-orb { display: none !important; }
+.kd-hero::after, .kd-page-hero::after, .kd-page-hero::before, .kd-banner::before { content: none !important; }
+.kd-page-hero { background: var(--paper); border-bottom: 1px solid var(--line-soft); }
+.kd-page-hero-stat-num { color: var(--ink) !important; }
+.kd-page-hero-stat-label { color: var(--ink-3) !important; }
+.kd-page-hero-stats { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-xl); padding: 14px 10px; max-width: 720px; margin: 26px auto 0; }
+.kd-hero-content, .kd-page-hero-inner { max-width: 900px; margin-inline: auto; }
+/* gradient वापरणाऱ्या इतर सर्व पानांवरील button/badge पण ink होतात */
+[style*="gradient-primary"], .kd-btn-gradient, .kd-bundle-btn, .kd-save-btn { background: var(--ink) !important; color: #fff !important; box-shadow: none !important; }
 
-/* nav brand tile: a wordmark inside a 36px square is unreadable — show the
-   square brand mark, cropped to cover, with the brand gradient behind it. */
-.kd-nav-brand-icon { background: linear-gradient(140deg, #4f46e5, #312e81); box-shadow: 0 4px 14px -6px rgba(79,70,229,.7); }
-.kd-nav-brand-icon img { object-fit: cover; border-radius: 10px; }
+/* ---------- उरलेली dark-band पानं: पांढरा मजकूर लिहिलेल्या bands
+   कागदावर तश्याच ठेवण्याऐवजी deliberate ink-band (contrast scan ने पकडलं) ---------- */
+.kd-product-hero, .kd-blog-hero, .kd-compare-hero, .kd-download-hero {
+  background: var(--ink); border-radius: 0; border-bottom: 1px solid rgba(255, 255, 255, .1); }
+.kd-product-hero::before, .kd-blog-hero::before, .kd-compare-hero::before { content: none !important; }
+.kd-product-hero .kd-product-hero-cat, .kd-product-hero .kd-product-hero-title,
+.kd-product-hero .kd-product-hero-desc, .kd-product-hero .kd-product-price-current,
+.kd-product-hero .kd-product-price-original, .kd-product-hero .kd-product-info-badge,
+.kd-product-hero span, .kd-product-hero p, .kd-product-hero h1, .kd-product-hero h2, .kd-product-hero h3 {
+  color: rgba(255, 255, 255, .78); }
+.kd-product-hero .kd-product-hero-title, .kd-product-hero h1 { color: #fff; font-weight: 400; letter-spacing: -.03em; }
+.kd-product-hero .kd-product-price-current { color: #fbbf24; }
+.kd-product-hero .kd-badge, .kd-product-hero .kd-product-info-badge { color: #0d0d0c; background: #fbbf24; }
+.kd-sample-btn { background: var(--ink); color: #fff; border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 8px; box-shadow: none; padding: 12px 20px; font-weight: 500; }
+.kd-sample-btn:hover { background: #1f1f1d; }
+/* कागदावर पांढरा दिसणारा nav-link (काही पानांवर स्वतःची rule) */
+.kd-nav .kd-nav-link, .kd-nav .kd-nav-links a, .kd-nav-links > a:not(.kd-nav-cta):not(.kd-lang-switcher) { color: var(--ink-2) !important; }
+.kd-nav .kd-nav-link:hover, .kd-nav .kd-nav-link.active { color: var(--ink) !important; }
+/* तक्त्याचे header: पांढरा-वर-पांढरा होऊ नये */
+th { color: var(--ink) !important; background: var(--paper-2) !important; border-bottom: 1px solid var(--line); }
+td { border-bottom: 1px solid var(--line-soft); }
+/* inline dark-band मधील statistic */
+.stat-num { color: var(--ink); } .stat-lbl { color: var(--ink-2); }
+.kd-page-hero .stat-num, .kd-product-hero .stat-num, .kd-cta-card .stat-num { color: #fff; }
+.kd-page-hero .stat-lbl, .kd-product-hero .stat-lbl, .kd-cta-card .stat-lbl { color: rgba(255,255,255,.66); }
+.kd-banner-icon, .kd-legal-hero-emoji, .kd-cta-icon { color: #fff !important; background: rgba(255,255,255,.12) !important; }
+.stock-tab { color: var(--ink-2); } .stock-tab.active { color: #fff; background: var(--ink); }
 
-/* social preview needs 1200px; keep the file light with quality instead of width */
+/* local <style> blocks main.css नंतर येतात, म्हणून काही cases साठी specificity वाढवली */
+.kd-hero, .kd-testimonials-section, .kd-cta-section { background: var(--paper); }
+/* info/blog pages च्या local styles मध्ये .kd-page-hero title पांढरं आहे →
+   तो band ink राहिला पाहिजे (paper केलं की मजकूर अदृश्य) */
+.kd-page-hero { background: var(--ink); }
+.kd-page-hero::before, .kd-page-hero::after { content: none !important; }
+table th, .kd-table th, .kd-compare th { color: var(--ink) !important; background: var(--paper-2) !important; }
+table td, .kd-table td, .kd-compare td { color: var(--ink); background: #fff; }
+.kd-blog-date, .kd-exam-compare-count, .kd-blog-category { color: var(--ink-2) !important; }
+.stock-badge, .stock-badge.stock-green { color: #047857 !important; background: rgba(5,150,105,.1) !important; }
+.kd-btn-primary, .pay-btn { color: #fff; }
+.pay-btn, .pay-btn.razorpay { background: var(--ink) !important; color: #fff !important; border-radius: 8px; box-shadow: none; border: 1px solid rgba(255,255,255,.2); }
+.pay-btn:hover { background: #000; }
+
+/* ---------- अंतिम contrast दुरुस्त्या (paper/ink pass) ---------- */
+.kd-testimonial-avatar { color: #fff !important; background: var(--ink) !important; border: none; }
+.kd-btn-primary { color: #fff !important; background: var(--ink) !important; border-color: var(--ink) !important; }
+.kd-cta-card .kd-btn-primary, .kd-banner .kd-btn-primary, .kd-page-hero .kd-btn-primary { color: var(--ink) !important; background: #fff !important; border-color: #fff !important; }
+.kd-page-hero-badge { color: var(--ink) !important; background: #fff; border: 1px solid var(--line); }
+.kd-page-hero-badge * { color: var(--ink) !important; }
+
+/* ---------- शेवटचे ६ (compare/pro पानांच्या local styles) ---------- */
+.kd-compare-hero { background: var(--ink) !important; }
+.kd-compare-hero-title, .kd-compare-hero-desc, .kd-compare-hero h1, .kd-compare-hero p { color: #fff !important; }
+.kd-compare-hero-desc, .kd-compare-hero p { color: rgba(255, 255, 255, .72) !important; }
+.kd-compare-hero-emoji, .kd-compare-hero-icon { color: #fff !important; background: rgba(255, 255, 255, .12) !important; }
+.kd-page-hero b, .kd-product-hero b, .kd-cta-card b, .kd-compare-hero b { color: #fff !important; }
+.badge { color: #fff !important; background: var(--ink) !important; }
+.note { color: var(--ink-2) !important; }
+.whatsapp-btn { background: #128c7e !important; color: #fff !important; }
+.kd-footer p, .kd-footer div[style*="rgba(255"], .kd-footer-brand-desc, .kd-footer .kd-footer-desc { color: var(--ink-2) !important; }
+.kd-compare-hero-desc, .kd-compare-hero .desc { color: var(--ink-2) !important; }
+.kd-section-title { color: var(--ink); }
+.kd-cta-card .kd-section-title, .kd-banner .kd-section-title, .kd-page-hero .kd-section-title { color: #fff; }
+/* testimonials कागदावर आहेत → title inkच (पांढरा दिला की अदृश्य — हेच माझं
+   दुसऱ्या फेरीतलं regressn होतं; probe ने रंग मोजून दुरुस्तलं) */
+.kd-testimonials-section .kd-section-title, .kd-testimonials-section .kd-section-sub { color: var(--ink); }
+/* bands जे पानांतल्या local <style> मध्ये white-assumed आहेत — येथे !important
+   लावावं लागतं कारण ते <style> block main.css नंतर येतो */
+.kd-page-hero, .kd-product-hero, .kd-compare-hero, .kd-blog-hero { background: var(--ink) !important; }
+.kd-page-hero-title, .kd-page-hero .kd-section-title, .kd-page-hero h1,
+.kd-compare-hero-title, .kd-blog-hero-title, .kd-product-hero-title { color: #fff !important; }
+.kd-page-hero-desc, .kd-page-hero .kd-section-sub, .kd-compare-hero-desc, .kd-product-hero-desc { color: rgba(255,255,255,.72) !important; }
+.kd-page-hero-stat-num, .kd-product-hero .stat-num, .kd-compare-hero .stat-num { color: #fff !important; }
+.kd-page-hero-stat-label, .kd-product-hero .stat-lbl { color: rgba(255,255,255,.66) !important; }
+.kd-page-hero-badge, .kd-product-hero-badge { background: rgba(255,255,255,.1) !important; color: #fff !important; border: 1px solid rgba(255,255,255,.22) !important; }
+.kd-page-hero-badge *, .kd-product-hero-badge * { color: inherit !important; }
+/* कागदावरील bands मध्ये हेच रंग उलटे — वरच्या !important नी हरवू नयेत */
+.kd-hero .kd-hero-title { color: var(--ink) !important; }
+.kd-hero .kd-hero-stat-num { color: var(--ink) !important; }
+.kd-hero .kd-hero-stat-label { color: var(--ink-3) !important; }
+.kd-hero .kd-hero-badge { color: var(--ink-2) !important; background: #fff !important; border-color: var(--line) !important; }
+/* nav CTA: वरच्या .kd-nav-link / .kd-lang-btn !important नी text ink-2 झाला होता
+   → ink bg वर ink text (अदृश्य pill). शेवटी highest-priority rule. */
+.kd-nav .kd-nav-cta, .kd-nav-cta { color:#fff !important; background:var(--ink) !important;
+  font-size:13.5px !important; font-weight:500 !important; padding:9px 16px !important; border-radius:8px !important; }
+.kd-nav .kd-nav-cta:hover, .kd-nav-cta:hover { color:#fff !important; background:#000 !important; }
+.kd-nav .kd-nav-cta img, .kd-nav .kd-nav-cta svg { filter:none; }
+#kdNav .kd-nav-cta, #kdNav .kd-nav-cta:hover, #kdNav .kd-nav-cta * { color:#fff !important; }
+#kdNav .kd-nav-cta { background:var(--ink) !important; border:1px solid var(--ink) !important; }
+#kdNav .kd-nav-cta:hover { background:#000 !important; }
+/* उरलेली ४ खरी दुरुस्त्या */
+.kd-blog-hero-emoji, .kd-download-hero-emoji { color:#fff !important; background:rgba(255,255,255,.12) !important; }
+.kd-blog-date, .kd-exam-compare-count, .kd-post-date { color: var(--ink-2) !important; }
+.kd-page-hero-badge, .kd-page-hero-badge * { color: var(--ink) !important; background:#fff !important; }
+.kd-cta-card .kd-hero-title-accent, .kd-banner .kd-hero-title-accent, .kd-cta-section .kd-hero-title-accent { color:#fff !important; }
+/* ── शेवटचे: white stats card + sample-btn + amber label text ─────────── */
+/* product CTA मधला sample-btn: gradient image + पांढरा text = अनिश्चित → solid ink */
+.kd-sample-btn { background: var(--ink) !important; background-image: none !important;
+  color: #fff !important; border: 1px solid var(--ink) !important; box-shadow: none !important; }
+.kd-sample-btn:hover { background: #000 !important; border-color:#000 !important; color:#fff !important; }
+/* ink band च्या आतली पांढरी stats card → आकडे ink हवेत (वरच्या white !important नी हरवत होते) */
+.kd-page-hero-stats .kd-page-hero-stat-num, .kd-page-hero .kd-page-hero-stats .stat-num { color: var(--ink) !important; }
+.kd-page-hero-stats .kd-page-hero-stat-label, .kd-page-hero .kd-page-hero-stats .stat-lbl { color: var(--ink-2) !important; }
+.kd-page-hero-stats { border: 1px solid var(--line) !important; box-shadow: none !important; }
+/* amber small label text पांढऱ्यावर 2.15:1 होता → amber-700 (3.4:1), accent रंग कायम */
+.kd-section-label, .kd-badge, .kd-hero-badge, .kd-tag, .kd-chip, .kd-price-note { color: #b45309 !important; }
+.kd-page-hero .kd-section-label, .kd-product-hero .kd-section-label, .kd-cta-card .kd-section-label,
+.kd-banner .kd-section-label, .kd-cta-card .kd-badge, .kd-banner .kd-badge { color: #fbbf24 !important; }
+/* ── अंतिम अदृश्य-दोष दुरुस्ती (attributed) ───────────────────────────── */
+/* 1) खरेदी बटण: text पांढरा पण bg transparent → paper वर अदृश्य (21 info पानं) */
+.kd-buy-btn { background: var(--ink) !important; background-image: none !important;
+  color: #fff !important; border: 1px solid var(--ink) !important; box-shadow: none !important; }
+.kd-buy-btn:hover { background: #000 !important; border-color:#000 !important; }
+.kd-buy-btn span, .kd-buy-btn * { color: #fff !important; }
+/* 2) ink bundle card मधला badge ink-on-ink */
+.kd-bundle-badge { color: #fbbf24 !important; background: rgba(255,255,255,.12) !important;
+  border: 1px solid rgba(255,255,255,.22) !important; }
+/* 3) blog thumb वरचा title पांढरा पण tile पांढरी */
+.kd-blog-img { background-color: var(--ink) !important; }
+.kd-blog-img * { color: #fff !important; }
+/* 4) hero title चा accent span ink-on-ink (gradient token ink झाल्याने bg काळा) */
+.kd-hero-title-accent { color: var(--ink) !important; background: none !important;
+  -webkit-text-fill-color: var(--ink) !important; }
+/* 5) product/blog hero band चे emoji tiles */
+.kd-product-hero-emoji, .kd-compare-hero-emoji, .kd-download-hero-emoji {
+  color: #fff !important; background: rgba(255,255,255,.12) !important;
+  border: 1px solid rgba(255,255,255,.2) !important; }
+/* 6) page-hero badge: पांढऱ्या pill वर amber text */
+.kd-page-hero-badge { color: var(--ink) !important; background: #fff !important; }
+.kd-page-hero-badge span { color: var(--ink) !important; }
+/* bundle-badge: ink व paper अशा दोन्ही card प्रकारावर दिसण्यासाठी स्वतःची light tile */
+.kd-bundle-badge { color:#b45309 !important; background:#fef3c7 !important;
+  border:1px solid rgba(180,83,9,.28) !important; box-shadow:none !important; }
+/* nav brand tile — जुना indigo gradient कागदावर वेगळा दिसतोय; ink करा */
+.kd-nav-brand-icon { background: var(--ink) !important; background-image: none !important;
+  border: 1px solid var(--ink) !important; border-radius: 10px !important; box-shadow: none !important; }
+.kd-nav-brand { color: var(--ink) !important; }
+
